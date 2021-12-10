@@ -1,16 +1,21 @@
 const body = $("body");
 const divMain = $("<div> </div>");
+const finalText = $(`<div> </div>`);
 const logo = $("<h1> Book Store </h1>");
 const divChart = $(`<div></div>`);
+const cont_chart = $(`<div> </div>`);
+cont_chart.addClass('chart');
 divChart.addClass('divChart');
-// const icon = $(`<i class="fas fa-cart-plus"></i>`);
+ const icon = $(`<i class="fas fa-cart-plus"></i>`);
+ const home = $(`<h3> Home </h3>`);
+ home.appendTo(body);
 let add = 0;
 let total = 0;
 let chart = $(`<span> ${add} </span>`);
 chart.appendTo(body);
 const cartContanier = $("<div> </div>");
 cartContanier.addClass("cartContainer");
-//icon.appendTo(divMain);
+icon.appendTo(body);
 logo.appendTo(divMain);
 divMain.appendTo(body);
 const book =
@@ -46,7 +51,11 @@ const book =
     //  ]
   ];
   //img
-class Chart{
+  const btnFinsh = $(`<button> cheak out  </button>`);
+  const totalChart = $(`<h4> </h4>`);
+  const thankYou = $(`<h5> </h5>`);
+  const final_total = $(`<p> </p>`);
+  class Chart{
 constructor(bookName,bookPrice){
   //this.img = img.attr('src',img);
   this.bookName = bookName;
@@ -55,23 +64,48 @@ constructor(bookName,bookPrice){
 getInfo(){
   //let quantity = 1;
    total += this.bookPrice;
-  const img = $(`<img>`);
+  //const img = $(`<img>`);
   const bookTitle = $(`<p></p>`);
   const book_price = $(`<span></span>`);
  // const q = $(`<span> ${quantity} </span>`);
- const totalChart = $(`<h4>Total is :  ${total}$ </h4>`);
+  totalChart.text(`Total is :  ${total}$`);
   bookTitle.text(this.bookName);
   book_price.text(`${this.bookPrice}$`);
-  img.appendTo(divChart);
+  //img.appendTo(divChart);
   bookTitle.appendTo(divChart);
   book_price.appendTo(divChart);
   totalChart.appendTo(divChart);
+  btnFinsh.appendTo(divChart);
  // q.appendTo(divChart);
   divChart.appendTo(body);
+  btnFinsh.on('click',() => {
+    finalText.show();
+    divChart.hide();
+    thankYou.text(`Thank you`);
+    final_total.text(` Your Final   Total is : ${total}`);
+    thankYou.appendTo(finalText);
+    final_total.appendTo(finalText);
+    finalText.appendTo(body)
+
+  })
+  finalText.hide();
+  divChart.hide();
+  // thankYou.hide();
+  
+  
 }
 
 }
-
+icon.on('click', () => {
+ cont_chart.hide();
+ divChart.show();
+ 
+});
+home.on('click',() => {
+  divChart.hide();
+  finalText.hide();
+  cont_chart.show();
+});
 book.forEach((obj, index) => {
   const divCart = $("<div> </div>");
   divCart.addClass(`cart${index}`);
@@ -88,7 +122,8 @@ book.forEach((obj, index) => {
   price.appendTo(divCart);
   btn.appendTo(divCart);
   divCart.appendTo(cartContanier);
-  cartContanier.appendTo(body);
+  cartContanier.appendTo(cont_chart);
+  cont_chart.appendTo(body);
   btn.on('click',() => {
     add++;
     chart.text(add);
