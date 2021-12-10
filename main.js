@@ -5,6 +5,13 @@ const logo = $("<h1> Book Store </h1>");
 const divChart = $(`<div></div>`);
 const cont_chart = $(`<div> </div>`);
 cont_chart.addClass('chart');
+// cont_chart.css(
+//   {
+//     display: 'flex',
+//     gap: '5px',
+//   }
+// )
+// cont_chart.css('display','flex');
 divChart.addClass('divChart');
  const icon = $(`<i class="fas fa-cart-plus"></i>`);
  const home = $(`<h3> Home </h3>`);
@@ -12,10 +19,16 @@ divChart.addClass('divChart');
 let add = 0;
 let total = 0;
 let chart = $(`<span> ${add} </span>`);
-chart.appendTo(body);
+chart.appendTo(divMain);
 const cartContanier = $("<div> </div>");
 cartContanier.addClass("cartContainer");
-icon.appendTo(body);
+cartContanier.css({
+  display: 'flex',
+  width: '30%',
+  gap: '30px',
+ ' text-align': 'start'
+});
+icon.appendTo(divMain);
 logo.appendTo(divMain);
 divMain.appendTo(body);
 const book =
@@ -28,7 +41,7 @@ const book =
       alt : 'book1',
       title: "book1",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, rem. Minimavoluptatibus corrupti et qui!",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, rem. Minimavoluptatibus corrupti et qui!1",
       price: 3 ,
       add_to: "add to chart",
     },
@@ -36,7 +49,7 @@ const book =
       img: "book.jpg",
       alt : 'book2',
       title: "book2",
-      description: "aaaaaaaaaaa",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, rem. Minimavoluptatibus corrupti et qui!2",
       price: 4 ,
       add_to: "add to chart",
     },
@@ -44,7 +57,7 @@ const book =
       img: "book.jpg",
       alt : 'book3',
       title: "book3",
-      description: "Lorem ipsum dolor sit amet  corrupti et qui!",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, rem. Minimavoluptatibus corrupti et qui!3",
       price: 5,
       add_to: "add to chart",
     },

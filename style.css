@@ -1,8 +1,6 @@
 /* .cartContanier{
-    display: flex;
-    gap: 5px;
-}
-.chat0 , .chat1 , .chat2{
+       display: flex;
     width: 30%;
-    ba
+    gap: 30px;
+    text-align: start;
 } */
