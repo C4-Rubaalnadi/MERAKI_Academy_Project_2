@@ -6,7 +6,7 @@ divChart.addClass('divChart');
 // const icon = $(`<i class="fas fa-cart-plus"></i>`);
 let add = 0;
 let chart = $(`<span> ${add} </span>`);
-chart.appendTo(divMain);
+chart.appendTo(body);
 const cartContanier = $("<div> </div>");
 cartContanier.addClass("cartContainer");
 //icon.appendTo(divMain);
@@ -39,22 +39,31 @@ const book =
       alt : 'book3',
       title: "book3",
       description: "Lorem ipsum dolor sit amet  corrupti et qui!",
-      price: "4$",
+      price: "5$",
       add_to: "add to chart",
     },
     //  ]
   ];
+  //img
 class Chart{
-constructor(img,bookName,bookPrice){
-  this.img = img;
+constructor(bookName,bookPrice){
+  //this.img = img.attr('src',img);
   this.bookName = bookName;
   this.bookPrice = bookPrice;
 }
 getInfo(){
+  //let quantity = 1;
   const img = $(`<img>`);
   const bookTitle = $(`<p></p>`);
   const book_price = $(`<span></span>`);
-  bookTitle
+ // const q = $(`<span> ${quantity} </span>`);
+  bookTitle.text(this.bookName);
+  book_price.text(this.bookPrice);
+  img.appendTo(divChart);
+  bookTitle.appendTo(divChart);
+  book_price.appendTo(divChart);
+ // q.appendTo(divChart);
+  divChart.appendTo(body);
 }
 
 }
@@ -79,6 +88,11 @@ book.forEach((obj, index) => {
   btn.on('click',() => {
     add++;
     chart.text(add);
+  //  let imgg =  obj.img ;
+    let titl = obj.title;
+    let pric = obj.price;
+    const addChart = new Chart(titl,pric);
+   addChart.getInfo();
     });
 });
 // cartContanier.css('display','flex');
