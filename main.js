@@ -6,11 +6,11 @@ divMain.css({
   gap: '60%',
 
 })
-const divchart = $(`<div> </div>`);
+const div_chart = $(`<div> </div>`);
 const finalText = $(`<div> </div>`);
 const logo = $("<h1> Book Store </h1>");
 logo.css('margin-left', '30px');
-const divChart = $(`<div></div>`);
+//const divChart = $(`<div></div>`);
 
 const cont_chart = $(`<div> </div>`);
 cont_chart.addClass('chart');
@@ -19,7 +19,7 @@ cont_chart.css({
  ' margin-top': '20px',
   'margin-left': '15%',
 });
-divChart.addClass('divChart');
+//divChart.addClass('divChart');
  const icon = $(`<i class="fas fa-cart-plus"></i>`);
  const home = $(`<h3> Home </h3>`);
  home.appendTo(body);
@@ -108,22 +108,24 @@ getInfo(){
     margin:'0',
   })
   const book_price = $(`<span></span>`);
+  const count = $(`<span></span>`);
  // const q = $(`<span> ${quantity} </span>`);
   totalChart.text(`Total is :  ${total}$`);
   bookTitle.text(this.bookName);
   book_price.text(`${this.bookPrice}$`);
-  //img.appendTo(divChart);
+  count.text (`${this.count}`);
   img.appendTo(inner_divchart);
   bookTitle.appendTo(inner_divchart);
   book_price.appendTo(inner_divchart);
+  count.appendTo(inner_divchart);
  // q.appendTo(divChart);
- inner_divchart.appendTo(divChart);
- totalChart.appendTo(divChart);
- btnFinsh.appendTo(divChart);
-  divChart.appendTo(body);
+ inner_divchart.appendTo(div_chart);
+ totalChart.appendTo(div_chart);
+ btnFinsh.appendTo(div_chart);
+ div_chart.appendTo(body);
   btnFinsh.on('click',() => {
     finalText.show();
-    divChart.hide();
+    div_chart.hide();
     thankYou.text(`Thank you`);
     final_total.text(` Your Final   Total is : ${total}`);
     thankYou.appendTo(finalText);
@@ -132,7 +134,7 @@ getInfo(){
 
   })
   finalText.hide();
-  divChart.hide();
+  div_chart.hide();
   // thankYou.hide();
   
   
@@ -142,11 +144,11 @@ getInfo(){
 icon.on('click', () => {
  cont_chart.hide();
  finalText.hide();
- divChart.show();
+ div_chart.show();
  
 });
 home.on('click',() => {
-  divChart.hide();
+  div_chart.hide();
   finalText.hide();
   cont_chart.show();
 });
@@ -171,15 +173,19 @@ book.forEach((obj, index) => {
   btn.on('click',() => {
     add++;
     chart.text(add);
-   let imgg =  obj.img ;
-  let count = obj.count
-  count++;
-  let titl = obj.title;
-  let pric = obj.price;
+    let imgg =  obj.img ;
+    let titl = obj.title;
+    let pric = obj.price;
+    let count = obj.q;
+    count++;
+  console.log(count);
   if(count === 1){
     const addChart = new Chart(imgg,titl,pric,count);
    addChart.getInfo();
   }
+    count++;
+    
+  
 
    
     });
