@@ -1,38 +1,37 @@
 const body = $("body");
 const divMain = $("<div> </div>");
-divMain.addClass('main');
+divMain.addClass("main");
 divMain.css({
-  display: 'flex',
-  gap: '60%',
-
-})
+  display: "flex",
+  gap: "60%",
+});
 const div_chart = $(`<div> </div>`);
+const divContLocal = $(`<div></div>`);
 const finalText = $(`<div> </div>`);
 const logo = $("<h1> Book Store </h1>");
-logo.css('margin-left', '30px');
+logo.css("margin-left", "30px");
 //const divChart = $(`<div></div>`);
 
 const cont_chart = $(`<div> </div>`);
-cont_chart.addClass('chart');
+cont_chart.addClass("chart");
 
 cont_chart.css({
- ' margin-top': '20px',
-  'margin-left': '15%',
+  " margin-top": "20px",
+  "margin-left": "15%",
 });
-//divChart.addClass('divChart');
- const icon = $(`<i class="fas fa-cart-plus"></i>`);
- const home = $(`<h3> Home </h3>`);
- home.appendTo(body);
+const icon = $(`<i class="fas fa-cart-plus"></i>`);
+const home = $(`<h3> Home </h3>`);
+home.appendTo(body);
 let add = 0;
 let total = 0;
 let chart = $(`<span> ${add} </span>`);
 const cartContanier = $("<div> </div>");
 cartContanier.addClass("cartContainer");
 cartContanier.css({
-  display: 'flex',
-  width: '30%',
-  gap: '30px',
-  ' text-align': 'start',
+  display: "flex",
+  width: "30%",
+  gap: "30px",
+  " text-align": "start",
   // 'flex-wrap': 'wrap',
 });
 logo.appendTo(divMain);
@@ -46,122 +45,123 @@ const book =
     // cart  [
     {
       img: "book.jpg",
-      alt : 'book1',
+      alt: "book1",
       title: "book1",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, rem. Minimavoluptatibus corrupti et qui!1",
-      price: 3 ,
+      price: 3,
       add_to: "add to chart",
-      q : 0,
-      
+      q: 0,
     },
     {
       img: "book.jpg",
-      alt : 'book2',
+      alt: "book2",
       title: "book2",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, rem. Minimavoluptatibus corrupti et qui!2",
-      price: 4 ,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, rem. Minimavoluptatibus corrupti et qui!2",
+      price: 4,
       add_to: "add to chart",
-      q : 0,
-     
+      q: 0,
     },
     {
       img: "book.jpg",
-      alt : 'book3',
+      alt: "book3",
       title: "book3",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, rem. Minimavoluptatibus corrupti et qui!3",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, rem. Minimavoluptatibus corrupti et qui!3",
       price: 5,
       add_to: "add to chart",
-      q : 0,
-      
+      q: 0,
     },
     //  ]
   ];
-  //img
-  const btnFinsh = $(`<button> cheak out  </button>`);
-  const totalChart = $(`<h4> </h4>`);
-  const thankYou = $(`<h5> </h5>`);
-  const final_total = $(`<p> </p>`);
-  class Chart{
-constructor(img,bookName,bookPrice,count){
-  //this.img = img.attr('src',img);
-  this.img = img;
-  this.bookName = bookName;
-  this.bookPrice = bookPrice;
-  this.count = count;
-}
-getInfo(){
-  const inner_divchart = $(`<div> </div>`);
-  inner_divchart.css({
-    display: 'flex',
-    gap: '15%',
-    'margin-left': '3%',
-    'margin-bottom': '2%',
-  })
-   total += this.bookPrice;
-  const img = $(`<img>`);
-  img.attr('src',this.img);
-  img.css('width','95px')
-  const bookTitle = $(`<p></p>`);
-  bookTitle.css({
-    padding: '0',
-    margin:'0',
-  })
-  const book_price = $(`<span></span>`);
-  const count = $(`<span></span>`);
- // const q = $(`<span> ${quantity} </span>`);
-  totalChart.text(`Total is :  ${total}$`);
-  bookTitle.text(this.bookName);
-  book_price.text(`${this.bookPrice}$`);
-  count.text (`${this.count}`);
-  img.appendTo(inner_divchart);
-  bookTitle.appendTo(inner_divchart);
-  book_price.appendTo(inner_divchart);
-  count.appendTo(inner_divchart);
- // q.appendTo(divChart);
- inner_divchart.appendTo(div_chart);
- totalChart.appendTo(div_chart);
- btnFinsh.appendTo(div_chart);
- div_chart.appendTo(body);
-  btnFinsh.on('click',() => {
-    finalText.show();
+
+const btnFinsh = $(`<button> cheak out  </button>`);
+const totalChart = $(`<h4> </h4>`);
+const thankYou = $(`<h5> </h5>`);
+const final_total = $(`<p> </p>`);
+
+
+//OPP
+class Chart {
+  constructor(img, bookName, bookPrice, count) {
+    //this.img = img.attr('src',img);
+    this.img = img;
+    this.bookName = bookName;
+    this.bookPrice = bookPrice;
+    this.count = count;
+  }
+  getInfo() {
+    const inner_divchart = $(`<div> </div>`);
+    inner_divchart.css({
+      display: "flex",
+      gap: "15%",
+      "margin-left": "3%",
+      "margin-bottom": "2%",
+    });
+    total += this.bookPrice;
+    const img = $(`<img>`);
+    img.attr("src", this.img);
+    img.css("width", "95px");
+    const bookTitle = $(`<p></p>`);
+    bookTitle.css({
+      padding: "0",
+      margin: "0",
+    });
+    const book_price = $(`<span></span>`);
+    const count = $(`<span></span>`);
+    // const q = $(`<span> ${quantity} </span>`);
+    totalChart.text(`Total is :  ${total}$`);
+    bookTitle.text(this.bookName);
+    book_price.text(`${this.bookPrice}$`);
+    count.text(`${this.count}`);
+    img.appendTo(inner_divchart);
+    bookTitle.appendTo(inner_divchart);
+    book_price.appendTo(inner_divchart);
+    count.appendTo(inner_divchart);
+    // q.appendTo(divChart);
+    inner_divchart.appendTo(div_chart);
+    totalChart.appendTo(div_chart);
+    btnFinsh.appendTo(div_chart);
+    div_chart.appendTo(body);
+    btnFinsh.on("click", () => {
+      finalText.show();
+      div_chart.hide();
+      thankYou.text(`Thank you`);
+      final_total.text(` Your Final   Total is : ${total}`);
+      thankYou.appendTo(finalText);
+      final_total.appendTo(finalText);
+      finalText.appendTo(body);
+    });
+    finalText.hide();
     div_chart.hide();
-    thankYou.text(`Thank you`);
-    final_total.text(` Your Final   Total is : ${total}`);
-    thankYou.appendTo(finalText);
-    final_total.appendTo(finalText);
-    finalText.appendTo(body)
-
-  })
+    //localStorage.setItem('getInfo', JSON.stringify(this.getInfo));
+    //  let retrievedObject = localStorage.getItem("getInfo");
+  }
+}
+icon.on("click", () => {
+  cont_chart.hide();
   finalText.hide();
-  div_chart.hide();
-  // thankYou.hide();
-  
-  
-}
-
-}
-icon.on('click', () => {
- cont_chart.hide();
- finalText.hide();
- div_chart.show();
- 
+  div_chart.show();
 });
-home.on('click',() => {
+home.on("click", () => {
   div_chart.hide();
   finalText.hide();
   cont_chart.show();
 });
+
+// add book
 book.forEach((obj, index) => {
   const divCart = $("<div> </div>");
-  divCart.addClass(`cart${index}`);
+  divCart.addClass(`${index}`);
   const img = $("<img />");
   const description = $(`<p>${obj.description}<p>`);
   const price = $(`<span> ${obj.price}$ </span>`);
   const title = $(`<h3> ${obj.title} </h3>`);
   const btn = $(`<button> ${obj.add_to} </button>`);
-  img.attr("src", obj.img ).attr('alt',obj.alt);
-  //alt.attr('alt',obj.alt); 
+  btn.attr('id',`${index}`);
+  // console.log(btn.attr('id',`${index}`));
+  img.attr("src", obj.img).attr("alt", obj.alt);
   img.appendTo(divCart);
   title.appendTo(divCart);
   description.appendTo(divCart);
@@ -170,31 +170,83 @@ book.forEach((obj, index) => {
   divCart.appendTo(cartContanier);
   cartContanier.appendTo(cont_chart);
   cont_chart.appendTo(body);
-  btn.on('click',() => {
-    add++;
-    chart.text(add);
-    let imgg =  obj.img ;
-    let titl = obj.title;
-    let pric = obj.price;
-    let count = obj.q;
-    count++;
-  console.log(count);
-  if(count === 1){
-    const addChart = new Chart(imgg,titl,pric,count);
-   addChart.getInfo();
-  }
-    count++;
-    
+
+  //add chart
+  const retrievedObject = JSON.parse(localStorage.getItem("cart"));
+  btn.on("click", () => {
+
+    retrievedObject.filter((e, i) => {
+      // console.log(e);
+      // let item = JSON.parse(localStorage.getItem("itemname"))
+      // console.log(item);
+      //let product = JSON.parse(retrievedObject.getItem(i));
+      console.log(product);
+      const divLocal = $("<div> </div>");
+  divLocal.addClass(`cart${i}`);
+  const imgLocal = $("<img />");
+  const titleLocal = $(`<h3> ${e.titl} </h3>`);
+  const priceLocal = $(`<span> ${e.pric}$ </span>`);
+  const countLocal = $(`<span></span>`);
+  imgLocal.attr("src", e.imgg);
+  countLocal.text(`${e.count}`);
+  imgLocal.appendTo(divLocal);
+  titleLocal.appendTo(divLocal);
+  priceLocal.appendTo(divLocal);
+  divLocal.appendTo(divContLocal);
+  divContLocal.appendTo(body);
+  });
+  })
+})
+
+ // console.log(retrievedObject);
+  // retrievedObject.forEach((e, i) => {
+  //  // console.log(e);
+  //   const divLocal = $("<div> </div>");
+  //   divLocal.addClass(`cart${i}`);
+  //   const imgLocal = $("<img />");
+  //   const titleLocal = $(`<h3> ${e.title} </h3>`);
+  //   const priceLocal = $(`<span> ${e.price}$ </span>`);
+  //   const countLocal = $(`<span></span>`);
+  //   imgLocal.attr("src", e.imgg);
+  //   countLocal.text(`${e.count}`);
+  //   imgLocal.appendTo(divLocal);
+  //   titleLocal.appendTo(divLocal);
+  //   priceLocal.appendTo(divLocal);
+  //   divLocal.appendTo(divContLocal);
+  //   divContLocal.appendTo(body);
+  //   //cont_chart.appendTo(body);
   
-
-   
-    });
-});
+  // });
+//});
 
 
 
+ // add++;
+// chart.text(add);
+    // let imgg = obj.img;
+    // let titl = obj.title;
+    // let pric = obj.price;
+    // let count = obj.q;
+    // count++;
+  
+    //cont_chart.appendTo(body);
 
 
+
+    // if (this.title == titl) {
+    //   console.log(count);
+    //   count++;
+    // }
+    // const addChart = new Chart(imgg, titl, pric, count);
+    // let gg = { imgg, titl, pric, count };
+    // // arr = [];
+    // arr.push(gg);
+
+    // console.log(arr);
+    // localStorage.setItem("cart", JSON.stringify(arr));
+
+    // console.log(addChart);
+    // addChart.getInfo();
 
 // getInfo(){
 //   //let quantity = 1;
@@ -226,6 +278,5 @@ book.forEach((obj, index) => {
 //   finalText.hide();
 //   divChart.hide();
 //   // thankYou.hide();
-  
-  
+
 // }
