@@ -41,7 +41,7 @@ const cartContanier = $("<div> </div>");
 cartContanier.addClass("cartContainer");
 cartContanier.css({
   display: "flex",
- margin : 'auto',
+  margin: "auto",
   gap: "30px",
   " text-align": "start",
   // 'flex-wrap': 'wrap',
@@ -63,7 +63,7 @@ const book =
       alt: "book1",
       title: "The Book Thief",
       description:
-        "The Book Thief is a story narrated by a compassionate Death who tells us about Liesel, a girl growing up in Germany during World War II",
+        "The Book Thief is a story narrated by a compassionate Death who tells us about Liesel, a girl growing up in Germany during World War II She steals books, learns to read, and finds comfort in words. ",
       price: 10,
       add_to: "add to chart",
       q: 0,
@@ -72,7 +72,8 @@ const book =
       img: "book.jpg",
       alt: "book3",
       title: "Harry Potter",
-      description:" Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley",
+      description:
+        " Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger",
       price: 15,
       add_to: "add to chart",
       q: 0,
@@ -148,26 +149,10 @@ class Chart {
     finalText.hide();
     div_chart.hide();
     localStorage.setItem("getInfo", JSON.stringify(this.getInfo));
-    // console.log(arr);
+    console.log(this.getInfo);
   }
 }
-// const addChart = new Chart(imgg, titl, pric, count);
-let retrievedObject = localStorage.getItem("getInfo");
-// let gg = { imgg, titl, pric, count };
-// let arr = [];
-//arr.push(gg);
-// retrievedObject.map((e, i) => {
-// console.log(retrievedObject.length);
-// console.log(false);
-// console.log(e);
-// let item = JSON.parse(localStorage.getItem("itemname"))
-// console.log(item);
-// let product = JSON.parse(retrievedObject.getItem(i));
-// console.log(product);
-
-// });
-// localStorage.setItem("cart", JSON.stringify(arr));
-
+let arr = [];
 ///////////////////////////////////////////// add book of main page/////////////////////////////////////////////////////
 book.forEach((obj, index) => {
   const divCart = $("<div> </div>");
@@ -185,9 +170,9 @@ book.forEach((obj, index) => {
     "margin-top": "55px",
     "text-align": "center",
     "background-color": "#fff",
-     color: "#DB641A",
+    color: "#DB641A",
     "border-radius": "20%",
-    height : '45px',
+    height: "45px",
     // margin : 'auto',
   });
   btn.attr("id", `${index}`);
@@ -200,8 +185,6 @@ book.forEach((obj, index) => {
   divCart.appendTo(cartContanier);
   cartContanier.appendTo(cont_chart);
   cont_chart.appendTo(body);
-
-  ////////////////////////////////////////////add chart in shopping chart /////////////////////////////////////////////
   btn.on("mouseover", () => {
     btn.css({
       "background-color": "#000",
@@ -212,38 +195,58 @@ book.forEach((obj, index) => {
       "background-color": "#fff",
     });
   });
+ 
 
-  //localStorage.setItem("getInfo", JSON.stringify(this.getInfo));
-  //const addChart = new Chart(imgg, titl, pric, count);
-  let retrievedObject = localStorage.getItem("getInfo");
-  const divLocal = $("<div> </div>");
   ///////// when click add book from local storage /////////////////////////////////////////////////////////////////////
   btn.on("click", () => {
-    const retrievedObject = JSON.parse(localStorage.getItem("cart"));
-    let item = `${index}`;
-    console.log(item);
-    for (let i = 0; i < retrievedObject.length; i++) {
-      if (item == i) {
+   // console.log("soso", obj);
+    arr.push(obj);
+    console.log("aee", arr);
+
+    localStorage.setItem("cart", JSON.stringify(arr));
+  });
+});
+icon.on("click", () => {
+  cont_chart.hide();
+  finalText.hide();
+  divContLocal.show();
+  totalChart.show();
+  btnFinsh.show();
+});
+home.on("click", () => {
+  divContLocal.hide();
+  finalText.hide();
+  totalChart.hide();
+  btnFinsh.hide();
+  cont_chart.show();
+});
+
+const divLocal = $("<div> </div>");
+let storge = JSON.parse(localStorage.getItem("cart"));
+//console.log(storge);
+    
+    for (let i = 0; i < storge.length; i++) {
+    //  if (item == i) {
         add++;
         chart.text(add);
         //  console.log(true);
-        divLocal.addClass(`cart${i}`);
+        divLocal.addClass(`${i}`);
         divLocal.css({
-          display: "inline-flex",
-          gap: "20%",
+          // display: "inline-flex",
+          // gap: "20%",
         });
         const imgLocal = $("<img />");
-        const titleLocal = $(`<h3> ${retrievedObject[i].titl} </h3>`);
-        const priceLocal = $(`<span> ${retrievedObject[i].pric}$ </span>`);
+        const titleLocal = $(`<h3> ${storge[i].title} </h3>`);
+        const priceLocal = $(`<span> ${storge[i].price}$ </span>`);
         const countLocal = $(`<span></span>`);
-        imgLocal.attr("src", retrievedObject[i].imgg);
+        imgLocal.attr("src", storge[i].img);
         imgLocal.css({
           width: "95px",
           "margin-bottom": "20px",
         }); //
-        total += retrievedObject[i].pric;
+        total += storge[i].price;
         totalChart.text(`Total is :  ${total}$`);
-        countLocal.text(`${retrievedObject[i].count}`);
+        countLocal.text(`${storge[i].q}`);
         imgLocal.appendTo(divLocal);
         titleLocal.appendTo(divLocal);
         priceLocal.appendTo(divLocal);
@@ -262,141 +265,9 @@ book.forEach((obj, index) => {
           final_total.appendTo(finalText);
           finalText.appendTo(body);
         });
-      }
+   //   }
 
       divContLocal.hide();
       totalChart.hide();
       btnFinsh.hide();
     }
-  });
-});
-////////////////////////////////////////////////////
-
-// book.forEach((e, i) => {
-//  // console.log(e);
-//  //let imgg = e.img;
-//  //let titl = e.title;
-//  //let pric = e.price;
-//  //let count = e.q;
-//   const divLocal = $("<div> </div>");
-//   divLocal.addClass(`cart${i}`);
-//   const imgLocal = $("<img />");
-//   const titleLocal = $(`<h3> ${e.title} </h3>`);
-//   const priceLocal = $(`<span> ${e.price}$ </span>`);
-//   const countLocal = $(`<span></span>`);
-//   imgLocal.attr("src", e.img);
-//   countLocal.text(`${e.count}`);
-//   imgLocal.appendTo(divLocal);
-//   titleLocal.appendTo(divLocal);
-//   priceLocal.appendTo(divLocal);
-//   divLocal.appendTo(divContLocal);
-//   divContLocal.appendTo(body);
-//   //cont_chart.appendTo(body);
-
-// });
-/////////////////////////////////////////////////////////
-icon.on("click", () => {
-  cont_chart.hide();
-  finalText.hide();
-  divContLocal.show();
-  totalChart.show();
-  btnFinsh.show();
-});
-home.on("click", () => {
-  divContLocal.hide();
-  finalText.hide();
-  totalChart.hide();
-  btnFinsh.hide();
-  cont_chart.show();
-  // body.css('background-color','red')
-});
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// console.log(retrievedObject);
-// retrievedObject.forEach((e, i) => {
-//  // console.log(e);
-//   const divLocal = $("<div> </div>");
-//   divLocal.addClass(`cart${i}`);
-//   const imgLocal = $("<img />");
-//   const titleLocal = $(`<h3> ${e.title} </h3>`);
-//   const priceLocal = $(`<span> ${e.price}$ </span>`);
-//   const countLocal = $(`<span></span>`);
-//   imgLocal.attr("src", e.imgg);
-//   countLocal.text(`${e.count}`);
-//   imgLocal.appendTo(divLocal);
-//   titleLocal.appendTo(divLocal);
-//   priceLocal.appendTo(divLocal);
-//   divLocal.appendTo(divContLocal);
-//   divContLocal.appendTo(body);
-//   //cont_chart.appendTo(body);
-
-// });
-//});
-
-// add++;
-// chart.text(add);
-// let imgg = obj.img;
-// let titl = obj.title;
-// let pric = obj.price;
-// let count = obj.q;
-// count++;
-
-//cont_chart.appendTo(body);
-
-// if (this.title == titl) {
-//   console.log(count);
-//   count++;
-// }
-// const addChart = new Chart(imgg, titl, pric, count);
-// let gg = { imgg, titl, pric, count };
-// // arr = [];
-// arr.push(gg);
-
-// console.log(arr);
-// localStorage.setItem("cart", JSON.stringify(arr));
-
-// console.log(addChart);
-// addChart.getInfo();
-
-// getInfo(){
-//   //let quantity = 1;
-//    total += this.bookPrice;
-//   //const img = $(`<img>`);
-//   const bookTitle = $(`<p></p>`);
-//   const book_price = $(`<span></span>`);
-//  // const q = $(`<span> ${quantity} </span>`);
-//   totalChart.text(`Total is :  ${total}$`);
-//   bookTitle.text(this.bookName);
-//   book_price.text(`${this.bookPrice}$`);
-//   //img.appendTo(divChart);
-//   bookTitle.appendTo(divChart);
-//   book_price.appendTo(divChart);
-//   totalChart.appendTo(divChart);
-//   btnFinsh.appendTo(divChart);
-//  // q.appendTo(divChart);
-//   divChart.appendTo(body);
-//   btnFinsh.on('click',() => {
-//     finalText.show();
-//     divChart.hide();
-//     thankYou.text(`Thank you`);
-//     final_total.text(` Your Final   Total is : ${total}`);
-//     thankYou.appendTo(finalText);
-//     final_total.appendTo(finalText);
-//     finalText.appendTo(body)
-
-//   })
-//   finalText.hide();
-//   divChart.hide();
-//   // thankYou.hide();
-
-// }
-// retrievedObject.map((e, i) => {
-// console.log(retrievedObject.length);
-
-// console.log(false);
-// console.log(e);
-// let item = JSON.parse(localStorage.getItem("itemname"))
-// console.log(item);
-//let product = JSON.parse(retrievedObject.getItem(i));
-// console.log(product);
-
-// });
