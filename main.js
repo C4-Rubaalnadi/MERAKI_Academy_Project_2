@@ -47,42 +47,41 @@ iconAdd.appendTo(body);
 divMain.appendTo(body);
 imgGirl.appendTo(body);
 /////////////////////data of book ///////////////////
-const book =
-  [
-    {
-      img: "book1.jpg",
-      alt: "book1",
-      title: "The Book Thief",
-      description:
-        "The Book Thief is a story narrated by a compassionate Death who tells us about Liesel, a girl growing up in Germany during World War II She steals books, learns to read, and finds comfort in words. ",
-      price: 10,
-      add_to: "add to chart",
-      id: 0,
-      q: 0,
-    },
-    {
-      img: "book.jpg",
-      alt: "book3",
-      title: "Harry Potter",
-      description:
-        " Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger",
-      price: 15,
-      add_to: "add to chart",
-      id: 1,
-      q: 0,
-    },
-    {
-      img: "book22.jpg",
-      alt: "book2",
-      title: "Dan Brown",
-      description:
-        "The Lost Symbol is a masterstroke of storytellinga deadly race through a real-world labyrinth of codes, secrets, and unseen truths all under the watchful eye",
-      price: 20,
-      add_to: "add to chart",
-      id: 2,
-      q: 0,
-    },
-  ];
+const book = [
+  {
+    img: "book1.jpg",
+    alt: "book1",
+    title: "The Book Thief",
+    description:
+      "The Book Thief is a story narrated by a compassionate Death who tells us about Liesel, a girl growing up in Germany during World War II She steals books, learns to read, and finds comfort in words. ",
+    price: 10,
+    add_to: "add to chart",
+    id: 0,
+    q: 0,
+  },
+  {
+    img: "book.jpg",
+    alt: "book3",
+    title: "Harry Potter",
+    description:
+      " Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger",
+    price: 15,
+    add_to: "add to chart",
+    id: 1,
+    q: 0,
+  },
+  {
+    img: "book22.jpg",
+    alt: "book2",
+    title: "Dan Brown",
+    description:
+      "The Lost Symbol is a masterstroke of storytellinga deadly race through a real-world labyrinth of codes, secrets, and unseen truths all under the watchful eye",
+    price: 20,
+    add_to: "add to chart",
+    id: 2,
+    q: 0,
+  },
+];
 /////////////////////////////////////////////////////////////////////////
 const btnFinsh = $(`<button> cheak out  </button>`);
 finalText.css({
@@ -113,7 +112,7 @@ btnFinsh.css({
   "background-color": "#000",
   color: "#fff",
   "font-size": "20px",
-  'margin-top' : '-7px'
+  "margin-top": "-7px",
 });
 const totalChart = $(`<h4> </h4>`);
 totalChart.css({
@@ -290,9 +289,6 @@ storge.forEach((element, i) => {
     finalText.appendTo(body);
   });
 });
-
-//   }
-
 divLocal.hide();
 totalChart.hide();
 btnFinsh.hide();
