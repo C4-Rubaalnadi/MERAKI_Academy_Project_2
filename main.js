@@ -199,7 +199,7 @@ class Chart {
       finalText.show();
       div_chart.hide();
       thankYou.text(`Thank you`);
-      final_total.text(` Your Final   Total is : ${total}`);
+      final_total.text(`Your Final Total is :${total}`);
       thankYou.appendTo(finalText);
       final_total.appendTo(finalText);
       finalText.appendTo(body);
@@ -217,9 +217,7 @@ book.forEach((obj, index) => {
   divCart.addClass(`${index}`);
   const img = $("<img />");
   // img.addClass = $()
-  // img.css({
-  //   width : '195px',
-  // })
+ 
   const description = $(`<p>${obj.description}<p>`);
   const price = $(`<span> ${obj.price}$ </span>`);
   const title = $(`<h3> ${obj.title} </h3>`);
@@ -239,6 +237,9 @@ book.forEach((obj, index) => {
   });
   btn.attr("id", `${index}`);
   img.attr("src", obj.img).attr("alt", obj.alt);
+  // img.css({
+  //   width: '1px',
+  //   })
   img.appendTo(divCart);
   title.appendTo(divCart);
   description.appendTo(divCart);
@@ -323,7 +324,7 @@ inerChart.css({
     btnFinsh.hide();
     finalText.show();
     thankYou.text(`Thank you`);
-    final_total.text(` Your Final   Total is : ${total}`);
+    final_total.text(` Your Final   Total is : ${total}$`);
     thankYou.appendTo(finalText);
     final_total.appendTo(finalText);
     finalText.appendTo(body);
