@@ -7,8 +7,8 @@ body{
     border: solid 1px #000;
     width: 10%;
     text-align: center;
-    background-color:#fff;
-    color:   #DB641A;  
+    background-color:#000;
+     color: #fff  ; /* #DB641A */
     border-radius: 20%;
     height: 32px;
     padding-top: 7px;
@@ -31,11 +31,13 @@ body{
     border: solid 1px #000;
     width: 17%;
     text-align: center;
-    background-color:#fff;
-    color:   #DB641A; 
+    background-color:#000;
+    color:   #fff; 
     border-radius: 20%;
     padding-top: 7px;
     padding-bottom: 7px;
+    margin-left: 96px;
+    margin-top: 3px;
 }
 .logo:hover{
     background-color: #000;
@@ -52,8 +54,8 @@ body{
     text-align: center;
     padding: 10px;
     border-radius: 50%;
-    background-color: #fff ;
-    color: #DB641A;
+    background-color: #000 ;
+    color: #fff;
     position: fixed;
     left: 91%;
     top: 12%;

@@ -1,11 +1,20 @@
 const body = $("body");
 const divMain = $("<div> </div>");
 const iconAdd = $("<div></div>");
+const imgGirl = $(`<img />`);
+imgGirl.attr('src','girl.png');
+imgGirl.css({
+  width: '137px',
+    position: 'absolute',
+    left: '20px',
+    top: '-4px',
+})
 iconAdd.addClass("iconAdd");
 divMain.addClass("main");
 divMain.css({
   display: "flex",
   gap: "60%",
+  'margin-top': '100px',
 });
 const div_chart = $(`<div> </div>`);
 // const divContLocal = $(`<div></div>`);
@@ -20,7 +29,7 @@ const finalText = $(`<div> </div>`);
 const logo = $("<h1> Book Store </h1>");
 logo.addClass("logo");
 logo.css({
-  "margin-left": "30px",
+  // "margin-left": "30px",
 });
 //const divChart = $(`<div></div>`);
 
@@ -52,6 +61,7 @@ home.appendTo(divMain);
 icon.appendTo(iconAdd);
 iconAdd.appendTo(body);
 divMain.appendTo(body);
+imgGirl.appendTo(body)
 /////////////////////////////////////////data of book ///////////////////////////////////////////////////////////////////
 const book =
   //{} to fo each
@@ -107,6 +117,9 @@ height: '200px',
 width: '40%',
 margin: 'auto',
 'border-radius': '12%',
+'background-color': '#000',
+color: '#fff',
+
 });
 btnFinsh.css({
   'position': 'relative',
@@ -117,8 +130,10 @@ btnFinsh.css({
   'text-align': 'center',
    padding: '3px', 
  ' padding-top': '10px',
-  background: '#fff',
   'border-radius': '15%',
+  'background-color': '#000',
+  color: '#fff',
+  'font-size' : '20px',
 })
 const totalChart = $(`<h4> </h4>`);
 totalChart.css({
@@ -132,6 +147,8 @@ totalChart.css({
  ' padding-top': '10px',
   background: '#fff',
   'border-radius': '15%',
+  'background-color': '#000',
+color: '#fff',
 })
 const thankYou = $(`<h5> </h5>`);
 const final_total = $(`<p> </p>`);
@@ -237,8 +254,8 @@ book.forEach((obj, index) => {
     //chart.text(add);
     arr.push(obj);
     btn.css({
-      "background-color": "#8B4513",
-      color: "#000",
+      "background-color": '#000',//"#8B4513"
+      color: "#fff",
     });
     localStorage.setItem("cart", JSON.stringify(arr));
   });
