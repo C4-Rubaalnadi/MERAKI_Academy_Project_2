@@ -263,6 +263,9 @@ storge.forEach((element, i) => {
   const imgLocal = $("<img />");
   const titleLocal = $(`<h3> ${element.title} </h3>`);
   const priceLocal = $(`<span> ${element.price}$ </span>`);
+  priceLocal.css({
+    'margin-top' : '20px'
+  })
   imgLocal.attr("src", element.img);
   imgLocal.css({
     width: "95px",
