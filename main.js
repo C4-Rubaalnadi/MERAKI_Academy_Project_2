@@ -2,36 +2,26 @@ const body = $("body");
 const divMain = $("<div> </div>");
 const iconAdd = $("<div></div>");
 const imgGirl = $(`<img />`);
-imgGirl.attr('src','girl.png');
+imgGirl.attr("src", "girl.png");
 imgGirl.css({
-  width: '137px',
-    position: 'absolute',
-    left: '20px',
-    top: '-4px',
-})
+  width: "137px",
+  position: "absolute",
+  left: "20px",
+  top: "-4px",
+});
 iconAdd.addClass("iconAdd");
 divMain.addClass("main");
 divMain.css({
   display: "flex",
   gap: "60%",
-  'margin-top': '100px',
+  "margin-top": "100px",
 });
 const div_chart = $(`<div> </div>`);
-// const divContLocal = $(`<div></div>`);
-// divContLocal.css({
-//   display: "flex",
-//   "flex-direction": " column",
-//   gap: "15%",
-//   "margin-left": "3%",
-//   "margin-bottom": "2%",
-// });
 const finalText = $(`<div> </div>`);
 const logo = $("<h1> Book Store </h1>");
 logo.addClass("logo");
-logo.css({
-  // "margin-left": "30px",
-});
-//const divChart = $(`<div></div>`);
+
+
 
 const cont_chart = $(`<div> </div>`);
 cont_chart.addClass("chart");
@@ -61,7 +51,7 @@ home.appendTo(divMain);
 icon.appendTo(iconAdd);
 iconAdd.appendTo(body);
 divMain.appendTo(body);
-imgGirl.appendTo(body)
+imgGirl.appendTo(body);
 /////////////////////////////////////////data of book ///////////////////////////////////////////////////////////////////
 const book =
   //{} to fo each
@@ -105,51 +95,49 @@ const book =
 /////////////////////////////////////////////////////////////////////////
 const btnFinsh = $(`<button> cheak out  </button>`);
 finalText.css({
-  'font-size' : '20px',
-  display: 'flex',
-'flex-direction': 'column',
-'justify-content': 'center',
-'align-items': 'center',
-border: '1px solid #000',
-background: '#fff'
-/* width: 51%; */,
-height: '200px',
-width: '40%',
-margin: 'auto',
-'border-radius': '12%',
-'background-color': '#000',
-color: '#fff',
-
+  "font-size": "20px",
+  display: "flex",
+  "flex-direction": "column",
+  "justify-content": "center",
+  "align-items": "center",
+  border: "1px solid #000",
+  background: "#fff",
+  /* width: 51%; */ height: "200px",
+  width: "40%",
+  margin: "auto",
+  "border-radius": "12%",
+  "background-color": "#000",
+  color: "#fff",
 });
 btnFinsh.css({
-  'position': 'relative',
-  left: '86%',
-  border: '1px solid #000',
- width: '8%',
-  height: '30px',
-  'text-align': 'center',
-   padding: '3px', 
- ' padding-top': '10px',
-  'border-radius': '15%',
-  'background-color': '#000',
-  color: '#fff',
-  'font-size' : '20px',
-})
+  position: "relative",
+  left: "86%",
+  border: "1px solid #000",
+  width: "8%",
+  height: "30px",
+  "text-align": "center",
+  padding: "3px",
+  " padding-top": "10px",
+  "border-radius": "15%",
+  "background-color": "#000",
+  color: "#fff",
+  "font-size": "20px",
+});
 const totalChart = $(`<h4> </h4>`);
 totalChart.css({
-  'position': 'relative',
-  left: '86%',
-  border: '1px solid #000',
- width: '8%',
-  height: '30px',
-  'text-align': 'center',
-   padding: '3px', 
- ' padding-top': '10px',
-  background: '#fff',
-  'border-radius': '15%',
-  'background-color': '#000',
-color: '#fff',
-})
+  position: "relative",
+  left: "86%",
+  border: "1px solid #000",
+  width: "8%",
+  height: "30px",
+  "text-align": "center",
+  padding: "3px",
+  " padding-top": "10px",
+  background: "#fff",
+  "border-radius": "15%",
+  "background-color": "#000",
+  color: "#fff",
+});
 const thankYou = $(`<h5> </h5>`);
 const final_total = $(`<p> </p>`);
 
@@ -217,7 +205,7 @@ book.forEach((obj, index) => {
   divCart.addClass(`${index}`);
   const img = $("<img />");
   // img.addClass = $()
- 
+
   const description = $(`<p>${obj.description}<p>`);
   const price = $(`<span> ${obj.price}$ </span>`);
   const title = $(`<h3> ${obj.title} </h3>`);
@@ -255,7 +243,7 @@ book.forEach((obj, index) => {
     //chart.text(add);
     arr.push(obj);
     btn.css({
-      "background-color": '#000',//"#8B4513"
+      "background-color": "#000", //"#8B4513"
       color: "#fff",
     });
     localStorage.setItem("cart", JSON.stringify(arr));
@@ -283,20 +271,18 @@ let storge = JSON.parse(localStorage.getItem("cart"));
 storge.forEach((element, i) => {
   //  if ( == i) {
   //   divLocal.addClass(`${i}`);
-const inerChart = $(`<div> </div>`);
-inerChart.css({
-  display: 'flex',
-    'justify-content': 'space-evenly',
-    'margin-top' : '20px',
-   
-})
+  const inerChart = $(`<div> </div>`);
+  inerChart.css({
+    display: "flex",
+    "justify-content": "space-evenly",
+    "margin-top": "20px",
+  });
   divLocal.css({
-    border : '1px solid #000',
-    width : '70%',
-    margin : 'auto',
+    border: "1px solid #000",
+    width: "70%",
+    margin: "auto",
     "background-color": "#fff",
     "border-radius": "5%",
-
   });
   const imgLocal = $("<img />");
   const titleLocal = $(`<h3> ${element.title} </h3>`);
@@ -306,7 +292,6 @@ inerChart.css({
   imgLocal.css({
     width: "95px",
     "margin-bottom": "20px",
-    
   }); //
   total += element.price;
   totalChart.text(`Total is :  ${total}$`);
