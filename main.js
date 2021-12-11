@@ -93,7 +93,7 @@ finalText.css({
   "align-items": "center",
   border: "1px solid #000",
   background: "#fff",
-  /* width: 51%; */ height: "200px",
+  height: "200px",
   width: "40%",
   margin: "auto",
   "border-radius": "12%",
@@ -113,6 +113,7 @@ btnFinsh.css({
   "background-color": "#000",
   color: "#fff",
   "font-size": "20px",
+  'margin-top' : '-7px'
 });
 const totalChart = $(`<h4> </h4>`);
 totalChart.css({
