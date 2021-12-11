@@ -20,15 +20,10 @@ const div_chart = $(`<div> </div>`);
 const finalText = $(`<div> </div>`);
 const logo = $("<h1> Book Store </h1>");
 logo.addClass("logo");
-
-
-
 const cont_chart = $(`<div> </div>`);
 cont_chart.addClass("chart");
-
 cont_chart.css({
   " margin-top": "20px",
-  // "margin-left": "15%",
 });
 const icon = $(`<i class="fas fa-cart-plus icon"></i>`);
 const home = $(`<h3> Home </h3>`);
@@ -43,7 +38,6 @@ cartContanier.css({
   margin: "auto",
   gap: "30px",
   " text-align": "start",
-  // 'flex-wrap': 'wrap',
 });
 logo.appendTo(divMain);
 home.appendTo(divMain);
@@ -52,12 +46,9 @@ icon.appendTo(iconAdd);
 iconAdd.appendTo(body);
 divMain.appendTo(body);
 imgGirl.appendTo(body);
-/////////////////////////////////////////data of book ///////////////////////////////////////////////////////////////////
+/////////////////////data of book ///////////////////
 const book =
-  //{} to fo each
   [
-    //  category : 'categoryAllBook',
-    // cart  [
     {
       img: "book1.jpg",
       alt: "book1",
