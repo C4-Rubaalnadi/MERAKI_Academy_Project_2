@@ -133,10 +133,9 @@ totalChart.css({
 const thankYou = $(`<h5> </h5>`);
 const final_total = $(`<p> </p>`);
 
-//////////////////////////////////OPP
+////////////////OPP//////////////////
 class Chart {
   constructor(img, bookName, bookPrice, count) {
-    //this.img = img.attr('src',img);
     this.img = img;
     this.bookName = bookName;
     this.bookPrice = bookPrice;
@@ -191,7 +190,7 @@ class Chart {
   }
 }
 
-///////////////////////////////////////////// add book of main page/////////////////////////////////////////////////////
+//////////////// add book of main page//////////////////////
 book.forEach((obj, index) => {
   const divCart = $("<div> </div>");
   divCart.addClass(`${index}`);
