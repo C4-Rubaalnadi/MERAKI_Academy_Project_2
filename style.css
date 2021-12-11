@@ -61,3 +61,15 @@ body{
 .iconAdd:hover{
     background-color: #000;
 }
+@media all and (max-width:1050px) {
+    .chart{
+        margin: auto;
+        width: 70%;
+    }
+}
+@media all and (max-width:600px) {
+    .chart{
+        margin: auto;
+        width: 50%;
+    }
+}

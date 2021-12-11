@@ -69,7 +69,7 @@ const book =
       q: 0,
     },
     {
-      img: "book33.jpg",
+      img: "book.jpg",
       alt: "book3",
       title: "Harry Potter",
       description:" Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley",
@@ -181,12 +181,14 @@ book.forEach((obj, index) => {
   btn.css({
     display: "block",
     border: "solid 1px #000",
-    width: "40%",
-    "margin-top": "5px",
+    // width: "30%",
+    "margin-top": "55px",
     "text-align": "center",
     "background-color": "#fff",
-    color: "#DB641A",
+     color: "#DB641A",
     "border-radius": "20%",
+    height : '45px',
+    // margin : 'auto',
   });
   btn.attr("id", `${index}`);
   img.attr("src", obj.img).attr("alt", obj.alt);
