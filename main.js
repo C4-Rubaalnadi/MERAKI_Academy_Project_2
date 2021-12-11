@@ -8,14 +8,14 @@ divMain.css({
   gap: "60%",
 });
 const div_chart = $(`<div> </div>`);
-const divContLocal = $(`<div></div>`);
-divContLocal.css({
-  display: "flex",
-  "flex-direction": " column",
-  gap: "15%",
-  "margin-left": "3%",
-  "margin-bottom": "2%",
-});
+// const divContLocal = $(`<div></div>`);
+// divContLocal.css({
+//   display: "flex",
+//   "flex-direction": " column",
+//   gap: "15%",
+//   "margin-left": "3%",
+//   "margin-bottom": "2%",
+// });
 const finalText = $(`<div> </div>`);
 const logo = $("<h1> Book Store </h1>");
 logo.addClass("logo");
@@ -34,9 +34,9 @@ cont_chart.css({
 const icon = $(`<i class="fas fa-cart-plus icon"></i>`);
 const home = $(`<h3> Home </h3>`);
 home.addClass("home");
-let add = 0;
+//let add = 0;
 let total = 0;
-let chart = $(`<span> ${add} </span>`);
+//let chart = $(`<span> ${add} </span>`);
 const cartContanier = $("<div> </div>");
 cartContanier.addClass("cartContainer");
 cartContanier.css({
@@ -48,7 +48,7 @@ cartContanier.css({
 });
 logo.appendTo(divMain);
 home.appendTo(divMain);
-chart.appendTo(icon);
+//chart.appendTo(icon);
 icon.appendTo(iconAdd);
 iconAdd.appendTo(body);
 divMain.appendTo(body);
@@ -66,6 +66,7 @@ const book =
         "The Book Thief is a story narrated by a compassionate Death who tells us about Liesel, a girl growing up in Germany during World War II She steals books, learns to read, and finds comfort in words. ",
       price: 10,
       add_to: "add to chart",
+      id: 0,
       q: 0,
     },
     {
@@ -76,6 +77,7 @@ const book =
         " Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger",
       price: 15,
       add_to: "add to chart",
+      id: 1,
       q: 0,
     },
     {
@@ -86,12 +88,51 @@ const book =
         "The Lost Symbol is a masterstroke of storytellinga deadly race through a real-world labyrinth of codes, secrets, and unseen truths all under the watchful eye",
       price: 20,
       add_to: "add to chart",
+      id: 2,
       q: 0,
     },
   ];
 /////////////////////////////////////////////////////////////////////////
 const btnFinsh = $(`<button> cheak out  </button>`);
+finalText.css({
+  'font-size' : '20px',
+  display: 'flex',
+'flex-direction': 'column',
+'justify-content': 'center',
+'align-items': 'center',
+border: '1px solid #000',
+background: '#fff'
+/* width: 51%; */,
+height: '200px',
+width: '40%',
+margin: 'auto',
+'border-radius': '12%',
+});
+btnFinsh.css({
+  'position': 'relative',
+  left: '86%',
+  border: '1px solid #000',
+ width: '8%',
+  height: '30px',
+  'text-align': 'center',
+   padding: '3px', 
+ ' padding-top': '10px',
+  background: '#fff',
+  'border-radius': '15%',
+})
 const totalChart = $(`<h4> </h4>`);
+totalChart.css({
+  'position': 'relative',
+  left: '86%',
+  border: '1px solid #000',
+ width: '8%',
+  height: '30px',
+  'text-align': 'center',
+   padding: '3px', 
+ ' padding-top': '10px',
+  background: '#fff',
+  'border-radius': '15%',
+})
 const thankYou = $(`<h5> </h5>`);
 const final_total = $(`<p> </p>`);
 
@@ -152,16 +193,20 @@ class Chart {
     console.log(this.getInfo);
   }
 }
-let arr = [];
+
 ///////////////////////////////////////////// add book of main page/////////////////////////////////////////////////////
 book.forEach((obj, index) => {
   const divCart = $("<div> </div>");
   divCart.addClass(`${index}`);
   const img = $("<img />");
+  // img.addClass = $()
+  // img.css({
+  //   width : '195px',
+  // })
   const description = $(`<p>${obj.description}<p>`);
   const price = $(`<span> ${obj.price}$ </span>`);
   const title = $(`<h3> ${obj.title} </h3>`);
-  const btn = $(`<button> ${obj.add_to} </button>`);
+  const btn = $(`<button> Add to Chart </button>`);
   btn.addClass("btnChart");
   btn.css({
     display: "block",
@@ -185,89 +230,91 @@ book.forEach((obj, index) => {
   divCart.appendTo(cartContanier);
   cartContanier.appendTo(cont_chart);
   cont_chart.appendTo(body);
-  btn.on("mouseover", () => {
-    btn.css({
-      "background-color": "#000",
-    });
-  });
-  btn.on("mouseout", () => {
-    btn.css({
-      "background-color": "#fff",
-    });
-  });
- 
 
-  ///////// when click add book from local storage /////////////////////////////////////////////////////////////////////
+  ///////// when click add book to local storage //////////
   btn.on("click", () => {
-   // console.log("soso", obj);
+    //add++;
+    //chart.text(add);
     arr.push(obj);
-    console.log("aee", arr);
-
+    btn.css({
+      "background-color": "#8B4513",
+      color: "#000",
+    });
     localStorage.setItem("cart", JSON.stringify(arr));
   });
 });
 icon.on("click", () => {
   cont_chart.hide();
   finalText.hide();
-  divContLocal.show();
+  divLocal.show();
   totalChart.show();
   btnFinsh.show();
 });
 home.on("click", () => {
-  divContLocal.hide();
+  divLocal.hide();
   finalText.hide();
   totalChart.hide();
   btnFinsh.hide();
   cont_chart.show();
 });
-
+let arr = [];
 const divLocal = $("<div> </div>");
 let storge = JSON.parse(localStorage.getItem("cart"));
 //console.log(storge);
-    
-    for (let i = 0; i < storge.length; i++) {
-    //  if (item == i) {
-        add++;
-        chart.text(add);
-        //  console.log(true);
-        divLocal.addClass(`${i}`);
-        divLocal.css({
-          // display: "inline-flex",
-          // gap: "20%",
-        });
-        const imgLocal = $("<img />");
-        const titleLocal = $(`<h3> ${storge[i].title} </h3>`);
-        const priceLocal = $(`<span> ${storge[i].price}$ </span>`);
-        const countLocal = $(`<span></span>`);
-        imgLocal.attr("src", storge[i].img);
-        imgLocal.css({
-          width: "95px",
-          "margin-bottom": "20px",
-        }); //
-        total += storge[i].price;
-        totalChart.text(`Total is :  ${total}$`);
-        countLocal.text(`${storge[i].q}`);
-        imgLocal.appendTo(divLocal);
-        titleLocal.appendTo(divLocal);
-        priceLocal.appendTo(divLocal);
-        divLocal.appendTo(divContLocal);
-        divContLocal.appendTo(body);
-        totalChart.appendTo(body);
-        btnFinsh.appendTo(body);
-        btnFinsh.on("click", () => {
-          divContLocal.hide();
-          totalChart.hide();
-          btnFinsh.hide();
-          finalText.show();
-          thankYou.text(`Thank you`);
-          final_total.text(` Your Final   Total is : ${total}`);
-          thankYou.appendTo(finalText);
-          final_total.appendTo(finalText);
-          finalText.appendTo(body);
-        });
-   //   }
 
-      divContLocal.hide();
-      totalChart.hide();
-      btnFinsh.hide();
-    }
+storge.forEach((element, i) => {
+  //  if ( == i) {
+  //   divLocal.addClass(`${i}`);
+const inerChart = $(`<div> </div>`);
+inerChart.css({
+  display: 'flex',
+    'justify-content': 'space-evenly',
+    'margin-top' : '20px',
+   
+})
+  divLocal.css({
+    border : '1px solid #000',
+    width : '70%',
+    margin : 'auto',
+    "background-color": "#fff",
+    "border-radius": "5%",
+
+  });
+  const imgLocal = $("<img />");
+  const titleLocal = $(`<h3> ${element.title} </h3>`);
+  const priceLocal = $(`<span> ${element.price}$ </span>`);
+  // const countLocal = $(`<span></span>`);
+  imgLocal.attr("src", element.img);
+  imgLocal.css({
+    width: "95px",
+    "margin-bottom": "20px",
+    
+  }); //
+  total += element.price;
+  totalChart.text(`Total is :  ${total}$`);
+  //countLocal.text(`${storge[i].q}`);
+  imgLocal.appendTo(inerChart);
+  titleLocal.appendTo(inerChart);
+  priceLocal.appendTo(inerChart);
+  inerChart.appendTo(divLocal);
+  divLocal.appendTo(body);
+  totalChart.appendTo(body);
+  btnFinsh.appendTo(body);
+  btnFinsh.on("click", () => {
+    divLocal.hide();
+    totalChart.hide();
+    btnFinsh.hide();
+    finalText.show();
+    thankYou.text(`Thank you`);
+    final_total.text(` Your Final   Total is : ${total}`);
+    thankYou.appendTo(finalText);
+    final_total.appendTo(finalText);
+    finalText.appendTo(body);
+  });
+});
+
+//   }
+
+divLocal.hide();
+totalChart.hide();
+btnFinsh.hide();
