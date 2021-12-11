@@ -195,8 +195,6 @@ book.forEach((obj, index) => {
   const divCart = $("<div> </div>");
   divCart.addClass(`${index}`);
   const img = $("<img />");
-  // img.addClass = $()
-
   const description = $(`<p>${obj.description}<p>`);
   const price = $(`<span> ${obj.price}$ </span>`);
   const title = $(`<h3> ${obj.title} </h3>`);
@@ -205,20 +203,15 @@ book.forEach((obj, index) => {
   btn.css({
     display: "block",
     border: "solid 1px #000",
-    // width: "30%",
     "margin-top": "55px",
     "text-align": "center",
     "background-color": "#fff",
     color: "#DB641A",
     "border-radius": "20%",
     height: "45px",
-    // margin : 'auto',
   });
   btn.attr("id", `${index}`);
   img.attr("src", obj.img).attr("alt", obj.alt);
-  // img.css({
-  //   width: '1px',
-  //   })
   img.appendTo(divCart);
   title.appendTo(divCart);
   description.appendTo(divCart);
@@ -227,11 +220,8 @@ book.forEach((obj, index) => {
   divCart.appendTo(cartContanier);
   cartContanier.appendTo(cont_chart);
   cont_chart.appendTo(body);
-
   ///////// when click add book to local storage //////////
   btn.on("click", () => {
-    //add++;
-    //chart.text(add);
     arr.push(obj);
     btn.css({
       "background-color": "#000", //"#8B4513"
@@ -257,11 +247,7 @@ home.on("click", () => {
 let arr = [];
 const divLocal = $("<div> </div>");
 let storge = JSON.parse(localStorage.getItem("cart"));
-//console.log(storge);
-
 storge.forEach((element, i) => {
-  //  if ( == i) {
-  //   divLocal.addClass(`${i}`);
   const inerChart = $(`<div> </div>`);
   inerChart.css({
     display: "flex",
@@ -278,7 +264,6 @@ storge.forEach((element, i) => {
   const imgLocal = $("<img />");
   const titleLocal = $(`<h3> ${element.title} </h3>`);
   const priceLocal = $(`<span> ${element.price}$ </span>`);
-  // const countLocal = $(`<span></span>`);
   imgLocal.attr("src", element.img);
   imgLocal.css({
     width: "95px",
@@ -286,7 +271,6 @@ storge.forEach((element, i) => {
   }); //
   total += element.price;
   totalChart.text(`Total is :  ${total}$`);
-  //countLocal.text(`${storge[i].q}`);
   imgLocal.appendTo(inerChart);
   titleLocal.appendTo(inerChart);
   priceLocal.appendTo(inerChart);
