@@ -92,12 +92,13 @@ finalText.css({
   "align-items": "center",
   border: "1px solid #000",
   background: "#fff",
-  height: "200px",
+  height: "160px",
   width: "40%",
   margin: "auto",
   "border-radius": "12%",
   "background-color": "#000",
   color: "#fff",
+  'font-weight': 'bolder'
 });
 btnFinsh.css({
   position: "relative",
@@ -131,6 +132,9 @@ totalChart.css({
 });
 const thankYou = $(`<h5> </h5>`);
 const final_total = $(`<p> </p>`);
+final_total.css({
+  'margin-top': '-10px'
+})
 
 ////////////////OPP//////////////////
 class Chart {
