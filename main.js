@@ -98,7 +98,7 @@ finalText.css({
   "border-radius": "12%",
   "background-color": "#000",
   color: "#fff",
-  'font-weight': 'bolder'
+  "font-weight": "bolder",
 });
 btnFinsh.css({
   position: "relative",
@@ -133,8 +133,8 @@ totalChart.css({
 const thankYou = $(`<h5> </h5>`);
 const final_total = $(`<p> </p>`);
 final_total.css({
-  'margin-top': '-10px'
-})
+  "margin-top": "-10px",
+});
 
 ////////////////OPP//////////////////
 class Chart {
@@ -209,7 +209,7 @@ book.forEach((obj, index) => {
     "margin-top": "55px",
     "text-align": "center",
     "background-color": "#fff",
-    color: "#DB641A",
+    color: "#000",
     "border-radius": "20%",
     height: "45px",
   });
@@ -227,8 +227,8 @@ book.forEach((obj, index) => {
   btn.on("click", () => {
     arr.push(obj);
     btn.css({
-      "background-color": "#000", //"#8B4513"
-      color: "#fff",
+      "background-color": "#dec573", //"#8B4513"
+      color: "#000",
     });
     localStorage.setItem("cart", JSON.stringify(arr));
   });
@@ -268,8 +268,8 @@ storge.forEach((element, i) => {
   const titleLocal = $(`<h3> ${element.title} </h3>`);
   const priceLocal = $(`<span> ${element.price}$ </span>`);
   priceLocal.css({
-    'margin-top' : '20px'
-  })
+    "margin-top": "20px",
+  });
   imgLocal.attr("src", element.img);
   imgLocal.css({
     width: "95px",
