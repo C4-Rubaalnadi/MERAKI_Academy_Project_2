@@ -44,9 +44,6 @@ body{
     /* width: 12%; */
 
 }
-/* .btnChart:hover{
-    background-color: #000;
-} */
 .iconAdd{
     border: 1px solid #000;
     width: 4%;
@@ -63,7 +60,7 @@ body{
 .iconAdd:hover{
     background-color: #000;
 }
-@media all and (max-width:1050px) {
+@media all and (max-width:1090px) {
     .chart{
         margin: auto;
         width: 70%;
@@ -73,5 +70,14 @@ body{
     .chart{
         margin: auto;
         width: 50%;
+    }
+    .main{
+        margin-top: 69px;
+    }
+    .logo{
+        padding-bottom: 3px;
+        margin-left: 103px;
+        margin-top: 36px;
+    
     }
 }
