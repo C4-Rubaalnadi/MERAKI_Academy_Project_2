@@ -1,6 +1,6 @@
 const body = $("body");
 // const divMain = $("<div> </div>");
-// const iconAdd = $("<div></div>");
+
 // const imgGirl = $(`<img />`);
 // imgGirl.attr("src", "girl.png");
 // imgGirl.css({
@@ -41,9 +41,7 @@ const body = $("body");
 // });
 // logo.appendTo(divMain);
 // home.appendTo(divMain);
-// //chart.appendTo(icon);
-// icon.appendTo(iconAdd);
-// iconAdd.appendTo(body);
+
 // divMain.appendTo(body);
 // imgGirl.appendTo(body);
 // /////////////////////data of book ///////////////////
@@ -223,6 +221,98 @@ const body = $("body");
 //   divCart.appendTo(cartContanier);
 //   cartContanier.appendTo(cont_chart);
 //   cont_chart.appendTo(body);
+
+////////////////////////////////////////////////////////////////////
+const localStorage = window.localStorage;
+let arr = [];
+const icon = $(`<i class="fas fa-cart-plus icon"></i>`);
+icon.appendTo(body);
+const divBookContant = $(`<div></div>`);
+divBookContant.addClass("bookContant");
+const divChart = $(`<div></div>`);
+divBookContant.css({
+  display: "grid",
+  "grid-template-columns": "200px 200px 200px",
+});
+const settings = {
+  async: true,
+  crossDomain: true,
+  url: "https://www.googleapis.com/books/v1/volumes?q=2000",
+  method: "GET",
+  // "headers": {
+  // 	"x-rapidapi-host": "superhero-search.p.rapidapi.com",
+  // 	"x-rapidapi-key": "cbe162d99fmsh97c38d07b9366d7p14bbbbjsn82c93be7cc5c"
+  // }
+};
+
+$.ajax(settings).done(function (response) {
+  const price = [10, 5, 20, 35, 40, 15, 10, 25, 5, 10];
+  let data = response.items;
+  data.forEach((element, i) => {
+    const divbook = $(`<div> </div>`);
+    divbook.addClass(`book${i}`);
+    const img = $(`<img />`);
+    const p = $(`<p>${element.volumeInfo.title}</p>`);
+    const parPrice = $(`<p></p>`);
+    const btnAdd = $(`<button> Add To Chart </button>`);
+    img.attr("src", `${element.volumeInfo.imageLinks.thumbnail}`);
+    parPrice.text(`${price[i]}$`);
+    parPrice.css({
+      color: "red",
+      "font-weight": "bolder",
+    });
+    btnAdd.on("click", () => {
+      arr.push(element);
+      localStorage.setItem("Books", JSON.stringify(arr));
+      arr.map((elementChart, i) => {
+        // arr = [];
+        const divBookChart = $(`<div> </div>`);
+        divBookChart.addClass(`bookChart${i}`);
+        const imgChart = $(`<img />`);
+        const pChart = $(`<p>${elementChart.volumeInfo.title}</p>`);
+        const parPriceChart = $(`<p></p>`)
+        imgChart.attr("src", `${elementChart.volumeInfo.imageLinks.thumbnail}`);
+        parPriceChart.text(`${price[i]}$`);
+        parPriceChart.css({
+          color: "red",
+          "font-weight": "bolder",
+        });
+        imgChart.appendTo(divBookChart);
+        pChart.appendTo(divBookChart);
+        parPriceChart.appendTo(divBookChart);
+        divBookChart.appendTo(divChart);
+        divChart.appendTo(body);
+      });
+      divChart.hide();
+    });
+    img.appendTo(divbook);
+    p.appendTo(divbook);
+    parPrice.appendTo(divbook);
+    btnAdd.appendTo(divbook);
+    divbook.appendTo(divBookContant);
+    divBookContant.appendTo(body);
+    // console.log(`${element.volumeInfo}`);
+    // console.log(element.volumeInfo.imageLinks.smallThumbnail);
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////
 //   ///////// when click add book to local storage //////////
 //   btn.on("click", () => {
 //     arr.push(obj);
@@ -299,52 +389,3 @@ const body = $("body");
 // divLocal.hide();
 // totalChart.hide();
 // btnFinsh.hide();
-
-////////////////////////////////////////////////////////////////////
-// const div = $(`<div></div>`);
-// div.appendTo(body)
-
-// const handleResponse= (response) => {
-//   for(let i = 0 ; i < response.items.length ; i++){
-//     let item = response.items[i];
-//     div.text(`${item.volumeInfo.title}`)
-//   }
-// }
-const divBookContant = $(`<div></div>`);
-divBookContant.addClass('bookContant');
-divBookContant.css({
-  display: 'grid',
-    'grid-template-columns': '200px 200px 200px',
-});
-const settings = {
-  async: true,
-  crossDomain: true,
-  url: "https://www.googleapis.com/books/v1/volumes?q=2000",
-  method: "GET",
-  // "headers": {
-  // 	"x-rapidapi-host": "superhero-search.p.rapidapi.com",
-  // 	"x-rapidapi-key": "cbe162d99fmsh97c38d07b9366d7p14bbbbjsn82c93be7cc5c"
-  // }
-};
-
-$.ajax(settings).done(function (response) {
-  const price = [10,5,20,35,40,15,10,25,5,10];
-  let data = response.items;
-  data.forEach((element, i) => {
-    const divbook = $(`<div> </div>`);
-    divbook.addClass(`book${i}`);
-    const img = $(`<img />`);
-    const p = $(`<p>${element.volumeInfo.title}</p>`);
-    const spanPrice = $(`<span></span>`);
-    img.attr("src", `${element.volumeInfo.imageLinks.thumbnail}`);
-    spanPrice.text(`${price[i]}$`);
-    img.appendTo(divbook);
-    p.appendTo(divbook);
-    spanPrice.appendTo(divbook)
-    divbook.appendTo(divBookContant);
-    divBookContant.appendTo(body)
-    // console.log(`${element.volumeInfo}`);
-    // console.log(element.volumeInfo.imageLinks.smallThumbnail);
-  });
-});
-
