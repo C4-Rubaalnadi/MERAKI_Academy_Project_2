@@ -1,6 +1,120 @@
 const body = $("body");
-// const divMain = $("<div> </div>");
+const navBar = $(`<div></div>`);
+navBar.css({
+  display: 'flex',
+    'justify-content': 'space-around',
+})
+const account = $(`<div> </div>`);
+const logo = $(`<h1> Book Store </h1>`);
+const icon = $(`<i class="fas fa-cart-plus icon"></i>`);
+const logIn = $(`<div> Login </div>`);
+const rigister = $(`<div>Rigister</div>`);
+logo.appendTo(navBar);
+logIn.appendTo(account);
+rigister.appendTo(account);
+account.appendTo(navBar);
+navBar.appendTo(body);
+const localStorage = window.localStorage;
+let arr = [];
+icon.appendTo(body);
+const divBookContant = $(`<div></div>`);
+divBookContant.addClass("bookContant");
+const divChart = $(`<div></div>`);
+divBookContant.css({
+  display: "grid",
+  "grid-template-columns": "200px 200px 200px",
+  width: '35%',
+    margin: 'auto',
+});
+const settings = {
+  async: true,
+  crossDomain: true,
+  url: "https://www.googleapis.com/books/v1/volumes?q=2000",
+  method: "GET",
+  // "headers": {
+  // 	"x-rapidapi-host": "superhero-search.p.rapidapi.com",
+  // 	"x-rapidapi-key": "cbe162d99fmsh97c38d07b9366d7p14bbbbjsn82c93be7cc5c"
+  // }
+};
 
+$.ajax(settings).done(function (response) {
+  const price = [10, 5, 20, 35, 40, 15, 10, 25, 5, 10];
+  let data = response.items;
+  data.forEach((element, i) => {
+    const divbook = $(`<div> </div>`);
+    divbook.addClass(`book${i}`);
+    const img = $(`<img />`);
+    const p = $(`<p>${element.volumeInfo.title}</p>`);
+    const parPrice = $(`<p></p>`);
+    const btnAdd = $(`<button> Add To Chart </button>`);
+    img.attr("src", `${element.volumeInfo.imageLinks.thumbnail}`);
+    parPrice.text(`${price[i]}$`);
+    parPrice.css({
+      color: "red",
+      "font-weight": "bolder",
+    });
+    btnAdd.on("click", () => {
+      arr.push(element);
+      localStorage.setItem("Books", JSON.stringify(arr));
+      arr.map((elementChart, i) => {
+        // arr = [];
+        const divBookChart = $(`<div> </div>`);
+        divBookChart.addClass(`bookChart${i}`);
+        const imgChart = $(`<img />`);
+        const pChart = $(`<p>${elementChart.volumeInfo.title}</p>`);
+        const parPriceChart = $(`<p></p>`)
+        imgChart.attr("src", `${elementChart.volumeInfo.imageLinks.thumbnail}`);
+        parPriceChart.text(`${price[i]}$`);
+        parPriceChart.css({
+          color: "red",
+          "font-weight": "bolder",
+        });
+        imgChart.appendTo(divBookChart);
+        pChart.appendTo(divBookChart);
+        parPriceChart.appendTo(divBookChart);
+        divBookChart.appendTo(divChart);
+        divChart.appendTo(body);
+      });
+      divChart.hide();
+    });
+    img.appendTo(divbook);
+    p.appendTo(divbook);
+    parPrice.appendTo(divbook);
+    btnAdd.appendTo(divbook);
+    divbook.appendTo(divBookContant);
+    divBookContant.appendTo(body);
+    // console.log(`${element.volumeInfo}`);
+    // console.log(element.volumeInfo.imageLinks.smallThumbnail);
+  });
+});
+icon.on('click',() => {
+  divBookContant.hide();
+  divChart.show();
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////
+// const divMain = $("<div> </div>");
 // const imgGirl = $(`<img />`);
 // imgGirl.attr("src", "girl.png");
 // imgGirl.css({
@@ -44,42 +158,7 @@ const body = $("body");
 
 // divMain.appendTo(body);
 // imgGirl.appendTo(body);
-// /////////////////////data of book ///////////////////
-// const book = [
-//   {
-//     img: "book1.jpg",
-//     alt: "book1",
-//     title: "The Book Thief",
-//     description:
-//       "The Book Thief is a story narrated by a compassionate Death who tells us about Liesel, a girl growing up in Germany during World War II She steals books, learns to read, and finds comfort in words. ",
-//     price: 10,
-//     add_to: "add to chart",
-//     id: 0,
-//     q: 0,
-//   },
-//   {
-//     img: "book.jpg",
-//     alt: "book3",
-//     title: "Harry Potter",
-//     description:
-//       " Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger",
-//     price: 15,
-//     add_to: "add to chart",
-//     id: 1,
-//     q: 0,
-//   },
-//   {
-//     img: "book22.jpg",
-//     alt: "book2",
-//     title: "Dan Brown",
-//     description:
-//       "The Lost Symbol is a masterstroke of storytellinga deadly race through a real-world labyrinth of codes, secrets, and unseen truths all under the watchful eye",
-//     price: 20,
-//     add_to: "add to chart",
-//     id: 2,
-//     q: 0,
-//   },
-// ];
+
 // /////////////////////////////////////////////////////////////////////////
 // const btnFinsh = $(`<button> cheak out  </button>`);
 // finalText.css({
@@ -223,169 +302,3 @@ const body = $("body");
 //   cont_chart.appendTo(body);
 
 ////////////////////////////////////////////////////////////////////
-const localStorage = window.localStorage;
-let arr = [];
-const icon = $(`<i class="fas fa-cart-plus icon"></i>`);
-icon.appendTo(body);
-const divBookContant = $(`<div></div>`);
-divBookContant.addClass("bookContant");
-const divChart = $(`<div></div>`);
-divBookContant.css({
-  display: "grid",
-  "grid-template-columns": "200px 200px 200px",
-});
-const settings = {
-  async: true,
-  crossDomain: true,
-  url: "https://www.googleapis.com/books/v1/volumes?q=2000",
-  method: "GET",
-  // "headers": {
-  // 	"x-rapidapi-host": "superhero-search.p.rapidapi.com",
-  // 	"x-rapidapi-key": "cbe162d99fmsh97c38d07b9366d7p14bbbbjsn82c93be7cc5c"
-  // }
-};
-
-$.ajax(settings).done(function (response) {
-  const price = [10, 5, 20, 35, 40, 15, 10, 25, 5, 10];
-  let data = response.items;
-  data.forEach((element, i) => {
-    const divbook = $(`<div> </div>`);
-    divbook.addClass(`book${i}`);
-    const img = $(`<img />`);
-    const p = $(`<p>${element.volumeInfo.title}</p>`);
-    const parPrice = $(`<p></p>`);
-    const btnAdd = $(`<button> Add To Chart </button>`);
-    img.attr("src", `${element.volumeInfo.imageLinks.thumbnail}`);
-    parPrice.text(`${price[i]}$`);
-    parPrice.css({
-      color: "red",
-      "font-weight": "bolder",
-    });
-    btnAdd.on("click", () => {
-      arr.push(element);
-      localStorage.setItem("Books", JSON.stringify(arr));
-      arr.map((elementChart, i) => {
-        // arr = [];
-        const divBookChart = $(`<div> </div>`);
-        divBookChart.addClass(`bookChart${i}`);
-        const imgChart = $(`<img />`);
-        const pChart = $(`<p>${elementChart.volumeInfo.title}</p>`);
-        const parPriceChart = $(`<p></p>`)
-        imgChart.attr("src", `${elementChart.volumeInfo.imageLinks.thumbnail}`);
-        parPriceChart.text(`${price[i]}$`);
-        parPriceChart.css({
-          color: "red",
-          "font-weight": "bolder",
-        });
-        imgChart.appendTo(divBookChart);
-        pChart.appendTo(divBookChart);
-        parPriceChart.appendTo(divBookChart);
-        divBookChart.appendTo(divChart);
-        divChart.appendTo(body);
-      });
-      divChart.hide();
-    });
-    img.appendTo(divbook);
-    p.appendTo(divbook);
-    parPrice.appendTo(divbook);
-    btnAdd.appendTo(divbook);
-    divbook.appendTo(divBookContant);
-    divBookContant.appendTo(body);
-    // console.log(`${element.volumeInfo}`);
-    // console.log(element.volumeInfo.imageLinks.smallThumbnail);
-  });
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////
-//   ///////// when click add book to local storage //////////
-//   btn.on("click", () => {
-//     arr.push(obj);
-//     btn.css({
-//       "background-color": "#dec573", //"#8B4513"
-//       color: "#000",
-//     });
-//     localStorage.setItem("cart", JSON.stringify(arr));
-//   });
-// });
-// icon.on("click", () => {
-//   cont_chart.hide();
-//   finalText.hide();
-//   divLocal.show();
-//   totalChart.show();
-//   btnFinsh.show();
-// });
-// home.on("click", () => {
-//   divLocal.hide();
-//   finalText.hide();
-//   totalChart.hide();
-//   btnFinsh.hide();
-//   cont_chart.show();
-// });
-// let arr = [];
-// const divLocal = $("<div> </div>");
-// let storge = JSON.parse(localStorage.getItem("cart"));
-// storge.forEach((element, i) => {
-//   const inerChart = $(`<div> </div>`);
-//   inerChart.css({
-//     display: "flex",
-//     "justify-content": "space-evenly",
-//     "margin-top": "20px",
-//   });
-//   divLocal.css({
-//     border: "1px solid #000",
-//     width: "70%",
-//     margin: "auto",
-//     "background-color": "#fff",
-//     "border-radius": "5%",
-//   });
-//   const imgLocal = $("<img />");
-//   const titleLocal = $(`<h3> ${element.title} </h3>`);
-//   const priceLocal = $(`<span> ${element.price}$ </span>`);
-//   priceLocal.css({
-//     "margin-top": "20px",
-//   });
-//   imgLocal.attr("src", element.img);
-//   imgLocal.css({
-//     width: "95px",
-//     "margin-bottom": "20px",
-//   }); //
-//   total += element.price;
-//   totalChart.text(`Total is :  ${total}$`);
-//   imgLocal.appendTo(inerChart);
-//   titleLocal.appendTo(inerChart);
-//   priceLocal.appendTo(inerChart);
-//   inerChart.appendTo(divLocal);
-//   divLocal.appendTo(body);
-//   totalChart.appendTo(body);
-//   btnFinsh.appendTo(body);
-//   btnFinsh.on("click", () => {
-//     divLocal.hide();
-//     totalChart.hide();
-//     btnFinsh.hide();
-//     finalText.show();
-//     thankYou.text(`Thank you`);
-//     final_total.text(` Your Final   Total is : ${total}$`);
-//     thankYou.appendTo(finalText);
-//     final_total.appendTo(finalText);
-//     finalText.appendTo(body);
-//   });
-// });
-// divLocal.hide();
-// totalChart.hide();
-// btnFinsh.hide();
