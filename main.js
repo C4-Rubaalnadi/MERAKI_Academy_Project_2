@@ -112,11 +112,11 @@ JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
   const divBookChart = $(`<div> </div>`);
   divBookChart.addClass(`bookChart${i}`);
   divBookChart.css({
-    display: 'flex',
-    'justify-content': 'space-around',
-    'margin-bottom': '20px',
-    width: '44%',
-  })
+    display: "flex",
+    "justify-content": "space-around",
+    "margin-bottom": "20px",
+    width: "44%",
+  });
   const imgChart = $(
     `<img src='${elementChart.volumeInfo.imageLinks.thumbnail}'/>`
   );
@@ -124,7 +124,7 @@ JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
   const parPriceChart = $(`<p>${price[i]}$</p>`);
   sumPrice += price[i];
   totalPrice.text(`Your Total Price : ${sumPrice}$`);
-  totalPrice.css('margin','50px');
+  totalPrice.css("margin", "50px");
   // imgChart.attr("src", `}`);
   // parPriceChart.text(``);
 
