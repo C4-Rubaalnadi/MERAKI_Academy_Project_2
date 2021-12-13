@@ -44,10 +44,11 @@ rigInfoEmail.appendTo(infoRig);
 rigInfoPass.appendTo(infoRig);
 rigInfoPassConf.appendTo(infoRig);
 btnRig.appendTo(infoRig);
-logIn.appendTo(navBar);
+
 infoRig.appendTo(accountLog);
 accountLog.appendTo(body);
 icon.appendTo(navBar);
+logIn.appendTo(navBar);
 navBar.appendTo(body);
 const localStorage = window.localStorage;
 const divBookContant = $(`<div></div>`);
@@ -105,14 +106,25 @@ $.ajax(settings).done(function (response) {
   });
   // console.log(arr);
 });
+let sumPrice = 0;
+const totalPrice = $(`<span> </span>`);
 JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
   const divBookChart = $(`<div> </div>`);
   divBookChart.addClass(`bookChart${i}`);
+  divBookChart.css({
+    display: 'flex',
+    'justify-content': 'space-around',
+    'margin-bottom': '20px',
+    width: '44%',
+  })
   const imgChart = $(
     `<img src='${elementChart.volumeInfo.imageLinks.thumbnail}'/>`
   );
   const pChart = $(`<p>${elementChart.volumeInfo.title}</p>`);
   const parPriceChart = $(`<p>${price[i]}$</p>`);
+  sumPrice += price[i];
+  totalPrice.text(`Your Total Price : ${sumPrice}$`);
+  totalPrice.css('margin','50px');
   // imgChart.attr("src", `}`);
   // parPriceChart.text(``);
 
@@ -125,6 +137,7 @@ JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
   parPriceChart.appendTo(divBookChart);
   // count.appendTo(divBookChart);
   divBookChart.appendTo(divChart);
+  totalPrice.appendTo(divChart);
   divChart.appendTo(body);
 });
 divChart.hide();
@@ -135,6 +148,7 @@ logo.on("click", () => {
   infoLog.hide();
   infoRig.hide();
   divBookContant.show();
+  icon.show();
 });
 icon.on("click", () => {
   divBookContant.hide();
@@ -178,11 +192,11 @@ btnLog.on("click", () => {
       wrongAccount.hide();
       userName.text(element.fullName);
       userName.appendTo(navBar);
+      icon.show();
       divBookContant.show();
     } else {
       wrongAccount.appendTo(infoLog);
       // wrongAccount.show();
     }
-    // wrongAccount.hide();
   });
 });
