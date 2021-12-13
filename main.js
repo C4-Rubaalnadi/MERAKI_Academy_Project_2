@@ -1,41 +1,55 @@
 const body = $("body");
 const navBar = $(`<div></div>`);
+const userName = $(`<h3></h3>`);
 navBar.css({
   display: "flex",
   "justify-content": "space-around",
 });
 const accountLog = $(`<div> </div>`);
+accountLog.addClass("account");
 const logo = $(`<h1> Book Store </h1>`);
+logo.appendTo(navBar);
 const icon = $(`<i class="fas fa-cart-plus icon"></i>`);
 const infoLog = $(`<div> </div>`);
+infoLog.addClass("sign");
+accountLog.css({
+  margin: "auto",
+  width: "10%",
+  position: "relative",
+  top: "260px",
+});
 const logIn = $(`<div> Sign In </div>`);
-const loginInfoEmail = $(`<input type="text">`);
-const loginInfoPass = $(`<input type="password">`);
+const loginInfoEmail = $(`<input type="text" placeholder="Email">`);
+const loginInfoPass = $(`<input type="password" placeholder="Password">`);
 const btnLog = $(`<button> Sign in</button>`);
+const toSignUp = $(`<p>Don't have an acount?</p>`);
 const infoRig = $(`<div> </div>`);
+infoLog.addClass("signin");
 const rigister = $(`<div>Sign Up</div>`);
-const fullName = $(`<input type = 'text'>`);
-const rigInfoEmail = $(`<input type="text">`);
-const rigInfoPass = $(`<input type="password">`);
-const rigInfoPassConf = $(`<input type="password">`);
+const fullName = $(`<input type = 'text' placeholder="Fullname">`);
+const rigInfoEmail = $(`<input type="text" placeholder="Email">`);
+const rigInfoPass = $(`<input type="password" placeholder="password">`);
+const rigInfoPassConf = $(
+  `<input type="password" placeholder="conform passworrd">`
+);
 const btnRig = $(`<button> Sign up </button>`);
 loginInfoEmail.appendTo(infoLog);
 loginInfoPass.appendTo(infoLog);
 btnLog.appendTo(infoLog);
-infoLog.appendTo(logIn);
+toSignUp.appendTo(infoLog);
+rigister.appendTo(infoLog);
+infoLog.appendTo(accountLog);
 fullName.appendTo(infoRig);
 rigInfoEmail.appendTo(infoRig);
 rigInfoPass.appendTo(infoRig);
 rigInfoPassConf.appendTo(infoRig);
 btnRig.appendTo(infoRig);
-logIn.appendTo(accountLog);
-rigister.appendTo(accountLog);
-accountLog.appendTo(navBar);
-infoRig.appendTo(rigister);
-logo.appendTo(navBar);
+logIn.appendTo(navBar);
+infoRig.appendTo(accountLog);
+accountLog.appendTo(body);
+icon.appendTo(navBar);
 navBar.appendTo(body);
 const localStorage = window.localStorage;
-icon.appendTo(body);
 const divBookContant = $(`<div></div>`);
 divBookContant.addClass("bookContant");
 const divChart = $(`<div></div>`);
@@ -56,12 +70,11 @@ const settings = {
   // }
 };
 let arr = [];
-let q = 1;
+const price = [10, 5, 20, 35, 40, 15, 10, 25, 5, 10];
+// let q = 1;
 $.ajax(settings).done(function (response) {
-  const price = [10, 5, 20, 35, 40, 15, 10, 25, 5, 10];
   let data = response.items;
   data.forEach((element, i) => {
-    
     const divbook = $(`<div> </div>`);
     divbook.addClass(`book${i}`);
     const img = $(`<img />`);
@@ -75,35 +88,11 @@ $.ajax(settings).done(function (response) {
       "font-weight": "bolder",
     });
     btnAdd.on("click", () => {
-      const count = $(`<span>${q}</span>`);
-      arr = JSON.parse(localStorage.getItem('Books')) || [];
+      // const count = $(`<span>${q}</span>`);
+      arr = JSON.parse(localStorage.getItem("Books")) || [];
       arr.push(element);
-      localStorage.setItem("Books", JSON.stringify(arr));  
-      console.log(arr);  
-      arr.map((elementChart, i) => {
-        // if(elementChart.volumeInfo.title ===element.volumeInfo.title){
-        //   count.text(`${q++}`);
-        // }
-        const divBookChart = $(`<div> </div>`);
-        divBookChart.addClass(`bookChart${i}`);
-        const imgChart = $(`<img />`);
-        const pChart = $(`<p>${elementChart.volumeInfo.title}</p>`);
-        const parPriceChart = $(`<p></p>`);
-        imgChart.attr("src", `${elementChart.volumeInfo.imageLinks.thumbnail}`);
-        parPriceChart.text(`${price[i]}$`);
-
-        parPriceChart.css({
-          color: "red",
-          "font-weight": "bolder",
-        });
-        imgChart.appendTo(divBookChart);
-        pChart.appendTo(divBookChart);
-        parPriceChart.appendTo(divBookChart);
-        count.appendTo(divBookChart);
-        divBookChart.appendTo(divChart);
-        divChart.appendTo(body);
-      });
-      divChart.hide();
+      localStorage.setItem("Books", JSON.stringify(arr));
+      //console.log(arr);
     });
     img.appendTo(divbook);
     p.appendTo(divbook);
@@ -114,17 +103,86 @@ $.ajax(settings).done(function (response) {
     // console.log(`${element.volumeInfo}`);
     // console.log(element.volumeInfo.imageLinks.smallThumbnail);
   });
+  // console.log(arr);
 });
+JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
+  const divBookChart = $(`<div> </div>`);
+  divBookChart.addClass(`bookChart${i}`);
+  const imgChart = $(
+    `<img src='${elementChart.volumeInfo.imageLinks.thumbnail}'/>`
+  );
+  const pChart = $(`<p>${elementChart.volumeInfo.title}</p>`);
+  const parPriceChart = $(`<p>${price[i]}$</p>`);
+  // imgChart.attr("src", `}`);
+  // parPriceChart.text(``);
+
+  parPriceChart.css({
+    color: "red",
+    "font-weight": "bolder",
+  });
+  imgChart.appendTo(divBookChart);
+  pChart.appendTo(divBookChart);
+  parPriceChart.appendTo(divBookChart);
+  // count.appendTo(divBookChart);
+  divBookChart.appendTo(divChart);
+  divChart.appendTo(body);
+});
+divChart.hide();
 infoLog.hide();
+infoRig.hide();
+logo.on("click", () => {
+  divChart.hide();
+  infoLog.hide();
+  infoRig.hide();
+  divBookContant.show();
+});
 icon.on("click", () => {
   divBookContant.hide();
   divChart.show();
 });
-logIn.on('click',() => {
+logIn.on("click", () => {
+  icon.hide();
+  // logIn.hide();
   divBookContant.hide();
+  infoRig.hide();
   infoLog.show();
 });
-logo.on('click' , () => {
-  divChart.hide();
+rigister.on("click", () => {
+  divBookContant.hide();
+  infoLog.hide();
+  infoRig.show();
+});
+let userAccuont = [];
+btnRig.on("click", () => {
+  userAccuont = JSON.parse(localStorage.getItem("userAccount")) || [];
+  userAccuont.push({
+    fullName: fullName.val(),
+    email: rigInfoEmail.val(),
+    pass: rigInfoPass.val(),
+  });
+  localStorage.setItem("userAccount", JSON.stringify(userAccuont));
+  infoRig.hide();
+  // userName.text(userAccuont.fullName);
   divBookContant.show();
-})
+});
+btnLog.on("click", () => {
+  let cheack = JSON.parse(localStorage.getItem("userAccount"));
+  const wrongAccount = $(`<p>Your Email or password wrong</p>`);
+  cheack.forEach((element) => {
+    if (
+      loginInfoEmail.val() === element.email &&
+      loginInfoPass.val() === element.pass
+    ) {
+      infoLog.hide();
+      infoRig.hide();
+      wrongAccount.hide();
+      userName.text(element.fullName);
+      userName.appendTo(navBar);
+      divBookContant.show();
+    } else {
+      wrongAccount.appendTo(infoLog);
+      // wrongAccount.show();
+    }
+    // wrongAccount.hide();
+  });
+});
