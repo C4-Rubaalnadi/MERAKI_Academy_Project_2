@@ -3,71 +3,74 @@ body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+   
 }
-
-.home{
-    border: solid 1px #000;
+.btn{
+    margin-bottom:  16px;
+    height: 40px;
+    border-radius: 15%;
+    background-color: #fff;
+    border: 2px solid rebeccapurple;
+}
+.btnsign{
+    width: 80px;
+    color: #fff;
+    background-color: rebeccapurple;
+    border: 2px solid #000;
+}
+.signup{
+    font-weight: bolder;
+    color: rebeccapurple;
+    font-size: 22px;
+}
+::placeholder{
+    color: #000;
+    opacity: 0.5;
+    font-weight: bolder;
+}
+.useName ,.iconLog , .logo{
+    color : #fff;
+}
+.navBar{
+    display: flex;
+  justify-content: space-around;
+  background-color: rebeccapurple;
+}
+.iconLog{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 50%;
+    gap: 20px;
+}
+.account{
+    margin: auto;
     width: 10%;
-    text-align: center;
-    background-color:#000;
-     color: #fff  ; /* #DB641A */
-    border-radius: 20%;
-    height: 32px;
-    padding-top: 7px;
+     position: relative;
+     top: 120px; 
 }
-.home:hover{
-    background-color: #000;
-    width: 12%;
-
+.logIn{
+    margin-top: 17px;
+  font-size: 20px;
+  font-weight: bolder;
+  color : #fff;
 }
-.chart{
-    margin: auto;
-    width: 50%;
-    /* margin-left: 15%; */
-    border: 1px solid #FFF4BE;
-    border-radius: 4%;
-    padding: 5%;
-    background-color: #000;
-    color: #fff;
-}
-.logo{
-    border: solid 1px #000;
-    width: 17%;
-    text-align: center;
-    background-color:#000;
-    color:   #fff; 
-    border-radius: 20%;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    margin-left: 108px;
-    margin-top: 3px;
-}
-.logo:hover{
-    background-color: #000;
-    /* width: 12%; */
-
-}
-.iconAdd{
-    border: 1px solid #000;
-    width: 4%;
-    margin: auto;
-    text-align: center;
-    padding: 10px;
-    border-radius: 50%;
-    background-color: #000 ;
-    color: #fff;
-    position: fixed;
-    left: 91%;
-    top: 12%;
-}
-.iconAdd:hover{
-    background-color: #000;
+.toSignUp{
+    width: 200px;
+    font-weight: bold;
+    color: red;
 }
 @media all and (max-width:1090px) {
     .chart{
         margin: auto;
         width: 70%;
     }
+}
+.divBookContant{
+    display: grid;
+    grid-template-columns : 200px 200px 200px;
+    width: 35%;
+    margin: auto;
+    padding-top: 70px;
 }
 @media all and (max-width:660px) {
     /* .bookContant{
