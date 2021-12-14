@@ -62,11 +62,12 @@ body{
 .totalPrice{
     margin: 50px;
     position: relative;
-    left: 70%;
+    left: 77%;
     border: 2px solid rebeccapurple;
     padding: 8px;
     font-weight: bolder;
     border-radius: 12%;
+    top : 60px
 }
 @media all and (max-width:1090px) {
     .chart{
@@ -77,20 +78,31 @@ body{
 .divBookContant{
     display: grid;
     grid-template-columns : 200px 200px 200px;
-    width: 35%;
+    width: 40%;
     margin: auto;
     padding-top: 70px;
 }
 .cheakOutbtn{
     position: relative;
-    top: 37px;
-    left: 57%;
+    top: 93px;
+    left: 53%;
     width: 77px;
     color: #fff;
     background-color: rebeccapurple;
     border: 2px solid #000;
     border-radius: 15%;
     height: 39px;
+}
+.notMatch{
+    width: 262px;
+    color: red;
+    font-weight: bolder;
+}
+.divChart{
+    border: 2px solid rebeccapurple;
+    margin: auto;
+    width: 50%;
+    margin-top: 38px;
 }
 
 @media all and (max-width:660px) {
