@@ -59,6 +59,15 @@ body{
     font-weight: bold;
     color: red;
 }
+.totalPrice{
+    margin: 50px;
+    position: relative;
+    left: 70%;
+    border: 2px solid rebeccapurple;
+    padding: 8px;
+    font-weight: bolder;
+    border-radius: 12%;
+}
 @media all and (max-width:1090px) {
     .chart{
         margin: auto;
@@ -72,6 +81,18 @@ body{
     margin: auto;
     padding-top: 70px;
 }
+.cheakOutbtn{
+    position: relative;
+    top: 37px;
+    left: 57%;
+    width: 77px;
+    color: #fff;
+    background-color: rebeccapurple;
+    border: 2px solid #000;
+    border-radius: 15%;
+    height: 39px;
+}
+
 @media all and (max-width:660px) {
     /* .bookContant{
         grid-template-columns: 200px 200px;
