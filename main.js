@@ -203,7 +203,7 @@ accept.appendTo(divFinal);
 divFinal.appendTo(body);
 divFinal.hide();
 //// get book from localStorage and show it in Shopping chart
-JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
+JSON.parse(localStorage.getItem("Books")) || [].forEach((elementChart, i) => {
   const divBookChart = $(`<div> </div>`);
   divBookChart.addClass(`bookChart`);
   // finalPrice.hide();
