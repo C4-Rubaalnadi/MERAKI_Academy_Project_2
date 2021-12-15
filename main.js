@@ -121,6 +121,7 @@ $.ajax(settings).done((response) => {
       width: "72%",
       padding: "20px",
       height: "350px",
+      'border-radius': '15%',
     });
     divbook.addClass(`book${i}`);
     divbook.addClass("books");
