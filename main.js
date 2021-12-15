@@ -304,6 +304,10 @@ btnRig.on("click", () => {
     divFinal.hide();
     infoRig.hide();
     divBookContant.show();
+    userName.text(userAccuont.fullName);
+    userName.show();
+    icon.show();
+    iconLogOut.show();
   } else {
     notMatch.show();
   }
