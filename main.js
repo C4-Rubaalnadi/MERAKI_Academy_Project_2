@@ -1,24 +1,24 @@
 const body = $("body");
 const navBar = $(`<div></div>`);
-const closeBook = $(`<i class="fas fa-book-open"></i>
+const closeBook = $(`<i class="fal fa-lightbulb-on"></i>
 `);
-closeBook.addClass('bookLight left')
-const openBook = $(`<i class="far fa-book-open"></i>`);
-openBook.on('click',() => {
+closeBook.addClass("bookLight left");
+const openBook = $(`<i class="fas fa-lightbulb-slash"></i>`);
+openBook.on("click", () => {
   body.css({
-    background: '#000',
-    color: '#fff',
-    opacity: '0.8'
-  })
-})
-closeBook.on('click',() => {
+    background: "#000",
+    color: "#fff",
+    opacity: "0.8",
+  });
+});
+closeBook.on("click", () => {
   body.css({
-    background: '#fff',
-    color: '#000',
-    opacity : '1',
-  })
-})
-openBook.addClass('bookLight');
+    background: "#fff",
+    color: "#000",
+    opacity: "1",
+  });
+});
+openBook.addClass("bookLight");
 navBar.addClass("navBar");
 const userName = $(`<h3></h3>`);
 userName.addClass("useName");
@@ -36,7 +36,7 @@ closeBook.appendTo(navBar);
 openBook.appendTo(navBar);
 logo.appendTo(navBar);
 const icon = $(`<i class="fas fa-cart-plus icon"></i>`);
-icon.addClass('iconChart')
+icon.addClass("iconChart");
 const infoLog = $(`<div> </div>`);
 const bookStore = $(`<p>Book Store</p>`);
 infoLog.addClass("sign");
@@ -122,13 +122,13 @@ $.ajax(settings).done((response) => {
       height: "350px",
     });
     divbook.addClass(`book${i}`);
-    divbook.addClass('books');
+    divbook.addClass("books");
     const img = $(`<img />`);
     const p = $(`<p>${element.volumeInfo.title}</p>`);
     p.css({
       width: "174px",
     });
-    const parPrice = $(`<p></p>`);
+    const parPrice = $(`<span></span>`);
     const btnAdd = $(`<button> Add To Chart </button>`);
     btnAdd.css({
       width: "80px",
@@ -164,35 +164,35 @@ const totalPrice = $(`<span> </span>`);
 const cheakOutbtn = $(`<button> Cheak Out </button>`);
 cheakOutbtn.addClass("cheakOutbtn");
 const divFinal = $(`<div></div>`);
-divFinal.addClass('final');
+divFinal.addClass("final");
 const finalPrice = $(`<p>Payment</p>`);
-finalPrice.addClass('totalPill');
+finalPrice.addClass("totalPill");
 const payment = $(`<p> Payment </p>`);
-payment.addClass('paymentText');
+payment.addClass("paymentText");
 const imgVisa = $(`<img  alt="visa">`);
-imgVisa.addClass('imgFinal');
-imgVisa.attr('src',"img/visa.png")
+imgVisa.addClass("imgFinal");
+imgVisa.attr("src", "img/visa.png");
 const imgPaypal = $(`<img alt="payple">`);
-imgPaypal.addClass('imgFinal');
-imgPaypal.attr('src',"img/paypal.png");
+imgPaypal.addClass("imgFinal");
+imgPaypal.attr("src", "img/paypal.png");
 const cardInput = $(`<input type="text" placeholder="Card number">`);
-cardInput.addClass('btn');
+cardInput.addClass("btn");
 const cardName = $(`<input type="text" placeholder="Card Holder name">`);
-cardName.addClass('btn')
+cardName.addClass("btn");
 const accept = $(`<button> accept </button>`);
-accept.addClass('accept');
+accept.addClass("accept");
 const divServ = $(`<div></div>`);
-divServ.addClass('divServ')
+divServ.addClass("divServ");
 const service = $(`<img alt ='service' />`);
-service.attr('src',"img/dilevery.png");
+service.attr("src", "img/dilevery.png");
 service.appendTo(divServ);
 divServ.appendTo(body);
 divServ.hide();
 /// event when click accept in shop Chart
-accept.on('click',() => {
+accept.on("click", () => {
   divFinal.hide();
   divServ.show();
-})
+});
 payment.appendTo(divFinal);
 imgVisa.appendTo(divFinal);
 imgPaypal.appendTo(divFinal);
@@ -220,10 +220,9 @@ JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
   const parPriceChart = $(`<p>${price[i]}$</p>`);
   const remov = $(`<i class="far fa-trash-alt"></i>`);
   ///event when click to remove
-  remov.on('click',() => {
+  remov.on("click", () => {
     divBookChart.remove();
-
-  })
+  });
   sumPrice += price[i];
   totalPrice.text(`Your Total Price : ${sumPrice}$`);
   totalPrice.addClass("totalPrice");
@@ -231,14 +230,13 @@ JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
     color: "red",
     "font-weight": "bolder",
   });
-  remov.on('click',() => {
+  remov.on("click", () => {
     divBookChart.remove();
     sumPrice -= price[i];
     totalPrice.text(`Your Total Price : ${sumPrice}$`);
     finalPrice.text(`Your bill is: ${sumPrice}$`);
-    
-  })
- 
+  });
+
   finalPrice.appendTo(divFinal);
   imgChart.appendTo(divBookChart);
   pChart.appendTo(divBookChart);
@@ -323,6 +321,8 @@ btnLog.on("click", () => {
       loginInfoEmail.val() === element.email &&
       loginInfoPass.val() === element.pass
     ) {
+      loginInfoEmail.value = ' '; 
+      loginInfoPass.value = ' ';
       divServ.hide();
       divFinal.hide();
       infoLog.hide();
@@ -341,8 +341,6 @@ btnLog.on("click", () => {
 });
 /// event when click iconLogOut
 iconLogOut.on("click", () => {
-  loginInfoEmail.attr("value", "");
-  loginInfoPass.attr("value", "");
   divServ.hide();
   divFinal.hide();
   divChart.hide();

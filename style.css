@@ -4,6 +4,9 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+/* p{
+  width: 136px;
+} */
 .btn {
   margin-bottom: 16px;
   height: 40px;
@@ -54,7 +57,6 @@ body {
 }
 .iconChart {
   position: relative;
-  
 }
 .account {
   margin: auto;
@@ -118,10 +120,11 @@ body {
 }
 .divBookContant {
   display: grid;
-  grid-template-columns: 200px 200px 200px;
-  width: 40%;
+  grid-template-columns: 250px 250px 250px 250px;
+  width: 77%;
   margin: auto;
   padding-top: 70px;
+  gap: 20px;
 }
 .cheakOutbtn {
   position: relative;
@@ -153,8 +156,8 @@ body {
 }
 @media only screen and (max-width: 600px) {
   .divBookContant {
-    width: 64%;
-    grid-template-columns: 212px;
+    width: 55vh;
+    grid-template-columns: 200px 200px;
   }
   .account {
     width: 41%;
@@ -163,7 +166,9 @@ body {
     margin-left: 0%;
   }
   .iconChart {
-    left: 110px;
+    left: 136px;
+    top: 49px;
+}
   }
   .divChart {
     display: grid;
@@ -198,14 +203,14 @@ body {
     height: 92px;
     font-size: 13px;
   }
-  .navBar .bookLight{
-    top: 7px;
-    right: -210px;
+  .navBar .bookLight {
+    top: 65px;
+    right: 0;
   }
-  .navBar .left{
-    left: 216px;
+  .navBar .left {
+    left: 0;
   }
-  .navBar .logo{
+  .navBar .logo {
     position: relative;
     left: -11px;
   }
@@ -226,11 +231,55 @@ body {
     left: -345px;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (width: 768px) {
   .divBookContant {
-    width: 78%;
     grid-template-columns: 200px 200px 200px;
+    gap: 10px;
   }
+  .left{
+    right: -37px;
+  }
+}
+@media only screen and (width: 1024px) {
+  .divBookContant {
+    grid-template-columns: 200px 200px 200px;
+     gap: 116px;
+  }
+  .navBar {
+    width: 96%;
+  }
+  .left{
+    right: -37px;
+  }
+  .account{
+      right: -37px;
+      }
+}
+@media only screen and (width: 375px) {
+  .divBookContant {
+    width: 103%;
+    grid-template-columns: 185px 193px;
+  }
+
+  .navBar {
+    width: 100%;
+  }
+  /* .left{
+    right: -40px;
+  } */
+  .account{
+      right: -37px;
+      }
+      /* .bookLight{
+        right: -265px;
+      } */
+}
+
+@media only screen and (min-width: 768px) {
+  /* .divBookContant {
+    /* grid-template-columns: 200px 200px 200px; */
+    /* gap: 10px; */
+  } */
   .iconLog {
     margin-left: 40%;
   }
@@ -248,10 +297,5 @@ body {
     top: 55px;
     left: 32%;
   }
-}
-@media only screen and (min-width: 992px) {
-  .divBookContant {
-    width: 50%;
-    grid-template-columns: 200px 200px 200px;
-  }
-}
+
+
