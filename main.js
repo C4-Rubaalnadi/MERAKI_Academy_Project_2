@@ -166,7 +166,7 @@ const cheakOutbtn = $(`<button> Cheak Out </button>`);
 cheakOutbtn.addClass("cheakOutbtn");
 const divFinal = $(`<div></div>`);
 divFinal.addClass("final");
-const finalPrice = $(`<p>Payment</p>`);
+const finalPrice = $(`<p></p>`);
 finalPrice.addClass("totalPill");
 const payment = $(`<p> Payment </p>`);
 payment.addClass("paymentText");
@@ -194,6 +194,7 @@ accept.on("click", () => {
   divFinal.hide();
   divServ.show();
 });
+
 payment.appendTo(divFinal);
 imgVisa.appendTo(divFinal);
 imgPaypal.appendTo(divFinal);
@@ -203,19 +204,18 @@ accept.appendTo(divFinal);
 divFinal.appendTo(body);
 divFinal.hide();
 //// get book from localStorage and show it in Shopping chart
-JSON.parse(localStorage.getItem("Books")) || [].forEach((elementChart, i) => {
+JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
   const divBookChart = $(`<div> </div>`);
   divBookChart.addClass(`bookChart`);
-  // finalPrice.hide();
   divBookChart.css({
     display: "grid",
-    "grid-template-columns": "200px 200px 200px 1px",
+    "grid-template-columns": "250px 250px 250px 1px",
     "justify-content": "center",
     "margin-bottom": "20px",
     "margin-top": "13%",
   });
   const imgChart = $(
-    `<img src='${elementChart.volumeInfo.imageLinks.thumbnail}finalPrice'/>`
+    `<img src='${elementChart.volumeInfo.imageLinks.thumbnail}'/>`
   );
   const pChart = $(`<h5>${elementChart.volumeInfo.title}</h5>`);
   const parPriceChart = $(`<p>${price[i]}$</p>`);
@@ -226,6 +226,7 @@ JSON.parse(localStorage.getItem("Books")) || [].forEach((elementChart, i) => {
   });
   sumPrice += price[i];
   totalPrice.text(`Your Total Price : ${sumPrice}$`);
+  finalPrice.text(`Your bill is: ${sumPrice}$`);
   totalPrice.addClass("totalPrice");
   parPriceChart.css({
     color: "red",
@@ -233,9 +234,13 @@ JSON.parse(localStorage.getItem("Books")) || [].forEach((elementChart, i) => {
   });
   remov.on("click", () => {
     divBookChart.remove();
+    divChart.css({
+      'margin-top' : '-1px',
+    })
     sumPrice -= price[i];
     totalPrice.text(`Your Total Price : ${sumPrice}$`);
     finalPrice.text(`Your bill is: ${sumPrice}$`);
+
   });
 
   finalPrice.appendTo(divFinal);

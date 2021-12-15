@@ -103,8 +103,8 @@ body {
 }
 .totalPill {
   position: relative;
-  left: 158px;
-  top: -3px;
+  left: -2px;
+  top: 29px;
 }
 .accept {
   position: relative;
@@ -180,13 +180,13 @@ body {
     gap: 107px;
   }
   .divChart span {
-    top: -170px;
-    width: 90px;
-    left: 17%;
+    left: 68%;
+    top: -138px;
+    width: 14%;
   }
   .divChart button {
-    top: -315px;
-    left: 28%;
+    top: -275px;
+    left: 78%;
   }
   .divChart p {
     margin-left: -187px;
@@ -215,7 +215,7 @@ body {
     left: -11px;
   }
   .final .totalPill {
-    left: 100px;
+    /* left: 100px; */
     width: 130px;
   }
   .final .accept {
@@ -228,9 +228,9 @@ body {
   .divServ img {
     width: 300px;
     position: relative;
-    left: -345px;
+    left:  125px;
   }
-}
+
 @media only screen and (width: 768px) {
   .divBookContant {
     grid-template-columns: 200px 200px 200px;
@@ -290,12 +290,12 @@ body {
     border: none;
   }
   .divChart span {
-    left: 66%;
-    top: 5px;
+    /* left: 66%;
+    top: 5px; */
   }
-  .divChart button {
-    top: 55px;
-    left: 32%;
-  }
+  /* .divChart button {
+    top: -140px;
+    left: 77%;
+  } */
 
 
