@@ -258,7 +258,7 @@ divChart.hide();
 infoLog.hide();
 infoRig.hide();
 logo.on("click", () => {
-  // accountLog.hide()
+  accountLog.hide()
   infoLog.hide();
   divServ.hide();
   divFinal.hide();
@@ -279,6 +279,7 @@ logIn.on("click", () => {
   divFinal.hide();
   divBookContant.hide();
   infoRig.hide();
+  accountLog.show();
   infoLog.show();
 });
 /// event when click sign up in log in
