@@ -37,6 +37,15 @@ body {
   justify-content: space-evenly;
   background-color: rebeccapurple;
 }
+.bookLight {
+  position: relative;
+  top: 53px;
+  color: #fff;
+  left: -20x;
+}
+.left {
+  right: -60px;
+}
 .iconLog {
   display: flex;
   margin-top: 20px;
@@ -45,7 +54,7 @@ body {
 }
 .iconChart {
   position: relative;
-  left: 230px;
+  
 }
 .account {
   margin: auto;
@@ -146,91 +155,103 @@ body {
   .divBookContant {
     width: 64%;
     grid-template-columns: 212px;
+  }
+  .account {
+    width: 41%;
+  }
+  .iconLog {
+    margin-left: 0%;
+  }
+  .iconChart {
+    left: 110px;
+  }
+  .divChart {
+    display: grid;
+    width: 100%;
+    border: none;
+    margin-left: -4px;
+    /* gap: -24px; */
+    grid-template-rows: 100px 100px 100px;
+    gap: 107px;
+  }
+  .divChart span {
+    top: -170px;
+    width: 90px;
+    left: 17%;
+  }
+  .divChart button {
+    top: -315px;
+    left: 28%;
+  }
+  .divChart p {
+    margin-left: -187px;
+  }
+  .divChart h5 {
+    width: 50px;
+    margin-left: -61px;
+  }
+  .divChart i {
+    margin-left: -346px;
+  }
+  .navBar {
+    width: 100%;
+    height: 92px;
+    font-size: 13px;
+  }
+  .navBar .bookLight{
+    top: 7px;
+    right: -210px;
+  }
+  .navBar .left{
+    left: 216px;
+  }
+  .navBar .logo{
+    position: relative;
+    left: -11px;
+  }
+  .final .totalPill {
+    left: 100px;
+    width: 130px;
+  }
+  .final .accept {
+    left: 121px;
+    bottom: -84px;
+  }
+  .final input {
+    width: 126px;
+  }
+  .divServ img {
+    width: 300px;
+    position: relative;
+    left: -345px;
+  }
 }
-.account{
-  width: 41%;
-}
-.iconLog{
-  margin-left: 0%;
-}
-.iconChart{
-  left: 139px;
-}
-.divChart{
-  display: grid;
-  width: 100%;
-  border: none;
-  margin-left: -4px;
-  /* gap: -24px; */
-  grid-template-rows: 100px 100px 100px;
-  gap: 107px;
-}
-.divChart span {
-  top: -170px;
-  width: 90px;
-  left: 26%;
-}
-.divChart button {
-  top: -315px;
-    left: 38%;
-}
-.divChart p {
-  margin-left: -68px;
-}
-.divChart h5 {
-  width: 50px;
-  margin-left: -54px;
-}
-.navBar{
-  width: 100%;
-  height: 92px;
-  font-size: 13px;
-}
-.final .totalPill{
-  left: 100px;
-  width: 130px;
-}
-.final .accept{
-  left: 121px;
-  bottom: -84px;
-}
-.final input{
-  width: 126px;
-}
-.divServ img{
-  width: 300px;
-  position: relative;
-  left: -345px;
-}
-}
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 768px) {
   .divBookContant {
     width: 78%;
     grid-template-columns: 200px 200px 200px;
-
-}
-.iconLog{
-  margin-left: 40%;
-}
-.iconChart{
-  left: 189px;
-}
-.divChart{
-  border:none;
-}
-.divChart span {
-  left: 66%;
-  top: 5px;
-}
-.divChart button{
-  top: 55px;
-  left: 32%;
-}
+  }
+  .iconLog {
+    margin-left: 40%;
+  }
+  .iconChart {
+    left: 188px;
+  }
+  .divChart {
+    border: none;
+  }
+  .divChart span {
+    left: 66%;
+    top: 5px;
+  }
+  .divChart button {
+    top: 55px;
+    left: 32%;
+  }
 }
 @media only screen and (min-width: 992px) {
   .divBookContant {
     width: 50%;
     grid-template-columns: 200px 200px 200px;
-
-}
+  }
 }

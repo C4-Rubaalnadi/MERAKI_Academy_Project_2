@@ -1,5 +1,24 @@
 const body = $("body");
 const navBar = $(`<div></div>`);
+const closeBook = $(`<i class="fas fa-book-open"></i>
+`);
+closeBook.addClass('bookLight left')
+const openBook = $(`<i class="far fa-book-open"></i>`);
+openBook.on('click',() => {
+  body.css({
+    background: '#000',
+    color: '#fff',
+    opacity: '0.8'
+  })
+})
+closeBook.on('click',() => {
+  body.css({
+    background: '#fff',
+    color: '#000',
+    opacity : '1',
+  })
+})
+openBook.addClass('bookLight');
 navBar.addClass("navBar");
 const userName = $(`<h3></h3>`);
 userName.addClass("useName");
@@ -13,6 +32,8 @@ const accountLog = $(`<div> </div>`);
 accountLog.addClass("account");
 const logo = $(`<h1> Book Store </h1>`);
 logo.addClass("logo");
+closeBook.appendTo(navBar);
+openBook.appendTo(navBar);
 logo.appendTo(navBar);
 const icon = $(`<i class="fas fa-cart-plus icon"></i>`);
 icon.addClass('iconChart')
@@ -139,6 +160,7 @@ $.ajax(settings).done((response) => {
 /// to add books in shopping chart from localStorage
 let sumPrice = 0;
 const totalPrice = $(`<span> </span>`);
+//// cheak out peage
 const cheakOutbtn = $(`<button> Cheak Out </button>`);
 cheakOutbtn.addClass("cheakOutbtn");
 const divFinal = $(`<div></div>`);
@@ -170,7 +192,6 @@ divServ.hide();
 accept.on('click',() => {
   divFinal.hide();
   divServ.show();
-  // divFinal.css('background-color','red')
 })
 payment.appendTo(divFinal);
 imgVisa.appendTo(divFinal);
@@ -180,13 +201,14 @@ cardName.appendTo(divFinal);
 accept.appendTo(divFinal);
 divFinal.appendTo(body);
 divFinal.hide();
+//// get book from localStorage and show it in Shopping chart
 JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
   const divBookChart = $(`<div> </div>`);
   divBookChart.addClass(`bookChart`);
   // finalPrice.hide();
   divBookChart.css({
     display: "grid",
-    "grid-template-columns": "200px 200px 200px",
+    "grid-template-columns": "200px 200px 200px 1px",
     "justify-content": "center",
     "margin-bottom": "20px",
     "margin-top": "13%",
@@ -196,6 +218,12 @@ JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
   );
   const pChart = $(`<h5>${elementChart.volumeInfo.title}</h5>`);
   const parPriceChart = $(`<p>${price[i]}$</p>`);
+  const remov = $(`<i class="far fa-trash-alt"></i>`);
+  ///event when click to remove
+  remov.on('click',() => {
+    divBookChart.remove();
+
+  })
   sumPrice += price[i];
   totalPrice.text(`Your Total Price : ${sumPrice}$`);
   totalPrice.addClass("totalPrice");
@@ -203,11 +231,19 @@ JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
     color: "red",
     "font-weight": "bolder",
   });
-  finalPrice.text(`Your bill is: ${sumPrice}$`);
+  remov.on('click',() => {
+    divBookChart.remove();
+    sumPrice -= price[i];
+    totalPrice.text(`Your Total Price : ${sumPrice}$`);
+    finalPrice.text(`Your bill is: ${sumPrice}$`);
+    
+  })
+ 
   finalPrice.appendTo(divFinal);
   imgChart.appendTo(divBookChart);
   pChart.appendTo(divBookChart);
   parPriceChart.appendTo(divBookChart);
+  remov.appendTo(divBookChart);
   divBookChart.appendTo(divChart);
   totalPrice.appendTo(divChart);
   cheakOutbtn.appendTo(divChart);
@@ -223,10 +259,11 @@ divChart.hide();
 infoLog.hide();
 infoRig.hide();
 logo.on("click", () => {
+  // accountLog.hide()
+  infoLog.hide();
   divServ.hide();
   divFinal.hide();
   divChart.hide();
-  infoLog.hide();
   infoRig.hide();
   divBookContant.show();
 });
