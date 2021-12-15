@@ -293,7 +293,7 @@ rigister.on("click", () => {
 /// event when click sign up in sign up
 let userAccuont = [];
 btnRig.on("click", () => {
-  if (rigInfoPass === rigInfoPassConf) {
+  if (rigInfoPass.val() == rigInfoPassConf.val()) {
     userAccuont = JSON.parse(localStorage.getItem("userAccount")) || [];
     userAccuont.push({
       fullName: fullName.val(),
@@ -323,8 +323,6 @@ btnLog.on("click", () => {
       loginInfoEmail.val() === element.email &&
       loginInfoPass.val() === element.pass
     ) {
-      loginInfoEmail.value = ' '; 
-      loginInfoPass.value = ' ';
       divServ.hide();
       divFinal.hide();
       infoLog.hide();
