@@ -1,125 +1,236 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-   
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-.btn{
-    margin-bottom:  16px;
-    height: 40px;
-    border-radius: 15%;
-    background-color: #fff;
-    border: 2px solid rebeccapurple;
+.btn {
+  margin-bottom: 16px;
+  height: 40px;
+  border-radius: 15%;
+  background-color: #fff;
+  border: 2px solid rebeccapurple;
 }
-.btnsign{
-    width: 80px;
-    color: #fff;
-    background-color: rebeccapurple;
-    border: 2px solid #000;
+.btnsign {
+  width: 80px;
+  color: #fff;
+  background-color: rebeccapurple;
+  border: 2px solid #000;
 }
-.signup{
-    font-weight: bolder;
-    color: rebeccapurple;
-    font-size: 22px;
+.signup {
+  font-weight: bolder;
+  color: rebeccapurple;
+  font-size: 22px;
 }
-::placeholder{
-    color: #000;
-    opacity: 0.5;
-    font-weight: bolder;
+::placeholder {
+  color: #000;
+  opacity: 0.5;
+  font-weight: bolder;
 }
-.useName ,.iconLog , .logo{
-    color : #fff;
+.useName,
+.iconLog,
+.logo {
+  color: #fff;
 }
-.navBar{
-    display: flex;
-  justify-content: space-around;
+.navBar {
+  display: flex;
+  justify-content: space-evenly;
   background-color: rebeccapurple;
 }
-.iconLog{
-    display: flex;
-    margin-top: 20px;
-    margin-left: 50%;
-    gap: 20px;
+.iconLog {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 50%;
+  gap: 20px;
 }
-.account{
-    margin: auto;
-    width: 10%;
-     position: relative;
-     top: 120px; 
+.iconChart {
+  position: relative;
+  left: 230px;
 }
-.logIn{
-    margin-top: 17px;
+.account {
+  margin: auto;
+  width: 10%;
+  position: relative;
+  top: 120px;
+}
+.logIn {
+  margin-top: 17px;
   font-size: 20px;
   font-weight: bolder;
-  color : #fff;
+  color: #fff;
 }
-.toSignUp{
-    width: 200px;
-    font-weight: bold;
-    color: red;
+.toSignUp {
+  width: 200px;
+  font-weight: bold;
+  color: red;
 }
-.totalPrice{
-    margin: 50px;
-    position: relative;
-    left: 77%;
-    border: 2px solid rebeccapurple;
-    padding: 8px;
-    font-weight: bolder;
-    border-radius: 12%;
-    top : 60px
+.totalPrice {
+  margin: 50px;
+  position: relative;
+  left: 77%;
+  border: 2px solid rebeccapurple;
+  padding: 8px;
+  font-weight: bolder;
+  border-radius: 12%;
+  top: 60px;
 }
-@media all and (max-width:1090px) {
-    .chart{
-        margin: auto;
-        width: 70%;
-    }
+.imgFinal {
+  width: 130px;
+  border: 2px solid rebeccapurple;
 }
-.divBookContant{
-    display: grid;
-    grid-template-columns : 200px 200px 200px;
-    width: 40%;
-    margin: auto;
-    padding-top: 70px;
+.final {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: auto;
+  gap: 15px;
 }
-.cheakOutbtn{
-    position: relative;
-    top: 93px;
-    left: 53%;
-    width: 77px;
-    color: #fff;
-    background-color: rebeccapurple;
-    border: 2px solid #000;
-    border-radius: 15%;
-    height: 39px;
+.paymentText {
+  border-bottom: 2px solid rebeccapurple;
+  margin-bottom: 4px;
+  padding: 11px;
 }
-.notMatch{
-    width: 262px;
-    color: red;
-    font-weight: bolder;
+.totalPill {
+  position: relative;
+  left: 158px;
+  top: -3px;
+}
+.accept {
+  position: relative;
+  left: 284px;
+  bottom: -51px;
+  width: 80px;
+  color: #fff;
+  background-color: rebeccapurple;
+  border: 2px solid #000;
+  height: 30px;
+  border-radius: 15%;
+  font-weight: bolder;
+}
+.divBookContant {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  width: 40%;
+  margin: auto;
+  padding-top: 70px;
+}
+.cheakOutbtn {
+  position: relative;
+  top: 93px;
+  left: 53%;
+  width: 77px;
+  color: #fff;
+  background-color: rebeccapurple;
+  border: 2px solid #000;
+  border-radius: 15%;
+  height: 39px;
+}
+.notMatch {
+  width: 262px;
+  color: red;
+  font-weight: bolder;
+}
+.divChart {
+  border: 2px solid rebeccapurple;
+  margin: auto;
+  width: 50%;
+  margin-top: 38px;
+}
+.divServ {
+  width: 38%;
+  position: relative;
+  top: 115px;
+  left: 390px;
+}
+@media only screen and (max-width: 600px) {
+  .divBookContant {
+    width: 64%;
+    grid-template-columns: 212px;
+}
+.account{
+  width: 41%;
+}
+.iconLog{
+  margin-left: 0%;
+}
+.iconChart{
+  left: 139px;
 }
 .divChart{
-    border: 2px solid rebeccapurple;
-    margin: auto;
-    width: 50%;
-    margin-top: 38px;
+  display: grid;
+  width: 100%;
+  border: none;
+  margin-left: -4px;
+  /* gap: -24px; */
+  grid-template-rows: 100px 100px 100px;
+  gap: 107px;
 }
+.divChart span {
+  top: -170px;
+  width: 90px;
+  left: 26%;
+}
+.divChart button {
+  top: -315px;
+    left: 38%;
+}
+.divChart p {
+  margin-left: -68px;
+}
+.divChart h5 {
+  width: 50px;
+  margin-left: -54px;
+}
+.navBar{
+  width: 100%;
+  height: 92px;
+  font-size: 13px;
+}
+.final .totalPill{
+  left: 100px;
+  width: 130px;
+}
+.final .accept{
+  left: 121px;
+  bottom: -84px;
+}
+.final input{
+  width: 126px;
+}
+.divServ img{
+  width: 300px;
+  position: relative;
+  left: -345px;
+}
+}
+@media only screen and (min-width: 768px){
+  .divBookContant {
+    width: 78%;
+    grid-template-columns: 200px 200px 200px;
 
-@media all and (max-width:660px) {
-    /* .bookContant{
-        grid-template-columns: 200px 200px;
-    } */
-    .chart{
-        margin: auto;
-        width: 50%;
-    }
-    .main{
-        margin-top: 69px;
-    }
-    .logo{
-        padding-bottom: 3px;
-        margin-left: 103px;
-        margin-top: 36px;
-    
-    }
+}
+.iconLog{
+  margin-left: 40%;
+}
+.iconChart{
+  left: 189px;
+}
+.divChart{
+  border:none;
+}
+.divChart span {
+  left: 66%;
+  top: 5px;
+}
+.divChart button{
+  top: 55px;
+  left: 32%;
+}
+}
+@media only screen and (min-width: 992px) {
+  .divBookContant {
+    width: 50%;
+    grid-template-columns: 200px 200px 200px;
+
+}
 }

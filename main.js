@@ -15,6 +15,7 @@ const logo = $(`<h1> Book Store </h1>`);
 logo.addClass("logo");
 logo.appendTo(navBar);
 const icon = $(`<i class="fas fa-cart-plus icon"></i>`);
+icon.addClass('iconChart')
 const infoLog = $(`<div> </div>`);
 const bookStore = $(`<p>Book Store</p>`);
 infoLog.addClass("sign");
@@ -76,7 +77,6 @@ notMatch.hide();
 const localStorage = window.localStorage;
 const divBookContant = $(`<div></div>`);
 divBookContant.addClass("divBookContant");
-divBookContant.addClass("bookContant");
 const divChart = $(`<div></div>`);
 divChart.addClass("divChart");
 const settings = {
@@ -101,6 +101,7 @@ $.ajax(settings).done((response) => {
       height: "350px",
     });
     divbook.addClass(`book${i}`);
+    divbook.addClass('books');
     const img = $(`<img />`);
     const p = $(`<p>${element.volumeInfo.title}</p>`);
     p.css({
@@ -141,15 +142,48 @@ const totalPrice = $(`<span> </span>`);
 const cheakOutbtn = $(`<button> Cheak Out </button>`);
 cheakOutbtn.addClass("cheakOutbtn");
 const divFinal = $(`<div></div>`);
-const finalPrice = $(`<p></p>`);
-const thanks = $(`<p> Thank You </p>`);
-thanks.appendTo(divFinal);
+divFinal.addClass('final');
+const finalPrice = $(`<p>Payment</p>`);
+finalPrice.addClass('totalPill');
+const payment = $(`<p> Payment </p>`);
+payment.addClass('paymentText');
+const imgVisa = $(`<img  alt="visa">`);
+imgVisa.addClass('imgFinal');
+imgVisa.attr('src',"img/visa.png")
+const imgPaypal = $(`<img alt="payple">`);
+imgPaypal.addClass('imgFinal');
+imgPaypal.attr('src',"img/paypal.png");
+const cardInput = $(`<input type="text" placeholder="Card number">`);
+cardInput.addClass('btn');
+const cardName = $(`<input type="text" placeholder="Card Holder name">`);
+cardName.addClass('btn')
+const accept = $(`<button> accept </button>`);
+accept.addClass('accept');
+const divServ = $(`<div></div>`);
+divServ.addClass('divServ')
+const service = $(`<img alt ='service' />`);
+service.attr('src',"img/dilevery.png");
+service.appendTo(divServ);
+divServ.appendTo(body);
+divServ.hide();
+/// event when click accept in shop Chart
+accept.on('click',() => {
+  divFinal.hide();
+  divServ.show();
+  // divFinal.css('background-color','red')
+})
+payment.appendTo(divFinal);
+imgVisa.appendTo(divFinal);
+imgPaypal.appendTo(divFinal);
+cardInput.appendTo(divFinal);
+cardName.appendTo(divFinal);
+accept.appendTo(divFinal);
 divFinal.appendTo(body);
 divFinal.hide();
 JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
   const divBookChart = $(`<div> </div>`);
-  divBookChart.addClass(`bookChart${i}`);
- // finalPrice.hide();
+  divBookChart.addClass(`bookChart`);
+  // finalPrice.hide();
   divBookChart.css({
     display: "grid",
     "grid-template-columns": "200px 200px 200px",
@@ -160,7 +194,7 @@ JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
   const imgChart = $(
     `<img src='${elementChart.volumeInfo.imageLinks.thumbnail}finalPrice'/>`
   );
-  const pChart = $(`<p>${elementChart.volumeInfo.title}</p>`);
+  const pChart = $(`<h5>${elementChart.volumeInfo.title}</h5>`);
   const parPriceChart = $(`<p>${price[i]}$</p>`);
   sumPrice += price[i];
   totalPrice.text(`Your Total Price : ${sumPrice}$`);
@@ -169,7 +203,7 @@ JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
     color: "red",
     "font-weight": "bolder",
   });
-  finalPrice.text(`${sumPrice}`);
+  finalPrice.text(`Your bill is: ${sumPrice}$`);
   finalPrice.appendTo(divFinal);
   imgChart.appendTo(divBookChart);
   pChart.appendTo(divBookChart);
@@ -179,6 +213,7 @@ JSON.parse(localStorage.getItem("Books")).forEach((elementChart, i) => {
   cheakOutbtn.appendTo(divChart);
   /// event when click cheakOutbtn
   cheakOutbtn.on("click", () => {
+    divServ.hide();
     divChart.hide();
     divFinal.show();
   });
@@ -188,6 +223,7 @@ divChart.hide();
 infoLog.hide();
 infoRig.hide();
 logo.on("click", () => {
+  divServ.hide();
   divFinal.hide();
   divChart.hide();
   infoLog.hide();
@@ -196,6 +232,7 @@ logo.on("click", () => {
 });
 /// event when click to icon shopping chart
 icon.on("click", () => {
+  divServ.hide();
   divBookContant.hide();
   divFinal.hide();
   divChart.show();
@@ -210,6 +247,7 @@ logIn.on("click", () => {
 });
 /// event when click sign up in log in
 rigister.on("click", () => {
+  divServ.hide();
   divBookContant.hide();
   divFinal.hide();
   infoLog.hide();
@@ -248,6 +286,7 @@ btnLog.on("click", () => {
       loginInfoEmail.val() === element.email &&
       loginInfoPass.val() === element.pass
     ) {
+      divServ.hide();
       divFinal.hide();
       infoLog.hide();
       infoRig.hide();
@@ -267,6 +306,7 @@ btnLog.on("click", () => {
 iconLogOut.on("click", () => {
   loginInfoEmail.attr("value", "");
   loginInfoPass.attr("value", "");
+  divServ.hide();
   divFinal.hide();
   divChart.hide();
   iconLogOut.hide();
