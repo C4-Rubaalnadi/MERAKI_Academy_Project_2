@@ -94,6 +94,7 @@ icon.hide();
 iconLogOut.hide();
 userName.hide();
 notMatch.hide();
+accountLog.hide();
 /////get books from Api and show thim in the paige
 const localStorage = window.localStorage;
 const divBookContant = $(`<div></div>`);
